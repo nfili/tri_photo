@@ -1,0 +1,383 @@
+@define-color fond #e8eef4;
+@define-color writing #175196;
+@define-color hover #daeafc;
+
+/*Apprence de la fenêtre principale*/
+window{
+	color: @writing;
+	background: linear-gradient( @writing 8%, #E8F1FB,@hover,whitesmoke );
+	border: 1px outset #E8F1FB;
+	box-shadow: 1px 2px darkblue;
+}
+/*---------------------------------*/
+
+/* apparence des Frame pour les conteneurs */
+frame{
+	border-color: @hover;
+	border-width: 2px;
+	border-radius: 10px;
+	background-color: @hover;
+	box-shadow: 1px 2px @writing;
+}
+frame>label{
+ 	color: @writing;
+ 	min-height: 12px;
+ 	font-weight: bold;
+ }
+ frame>#box_conteneur0{
+ 	background-color: @fond;
+ 	border: 1px outset @fond;
+ 	box-shadow: 2px 5px gray;
+ }
+/*----------------------------------------*/
+
+/*Hedear_ bar*/
+.header_bar, headerbar{
+	color: @writing;
+	background: whitesmoke;
+	border-bottom-color: @fond;
+	font-weight: bolder;
+}
+.header_bar, .header_bar button, .heade_rbar image{
+	border: 0;
+	margin: 0;
+	min-height: 0;
+}
+.btn_hb{
+	border: none;
+	background: whitesmoke;
+	color: @hover;
+/*	font-size: 10px;*/
+}
+/*.btn_lab_hb:hover{
+	background: @hover;
+	border-radius: 50%;
+}*/
+
+.btn_lab_hb{
+	border: none;
+	background: whitesmoke;
+	color: @hover;
+	font-size: 8px;
+}
+
+.btn_lab_hb:hover{
+	/*background: red;
+	border-radius: 100%;*/
+	background: @hover;
+	border-radius: 50%;
+	transform:scale(1.5);
+	color: @writing;
+}.btn_lab_quit_hb:hover{
+	background: #f08080;
+}
+.btn_lab_hb:active{
+	transform:scale(1.7);
+	color: @writing;
+}
+.btn_lab_hb:disabled{
+	color: @fond;
+	background: gray;
+}
+/*-------------------*/
+
+/*Bouton de l'interface, Valider quitter, suivant, démarrer,Sauvegarder et quitter */
+.btn{
+	border-color: @writing;
+	color: @writing;
+	background: @fond;
+	border-style: outset;
+	box-shadow:  1px 2px @writing;
+}
+.btn:hover{
+	background: @hover;
+}
+.btn:active{
+	color: @fond;
+	background: @writing;
+}
+.btn:disabled{
+	color: @fond;
+	background: gray;
+}
+/*----------------------------------*/
+
+/*Boutton de sélection de répertoire*/
+.btn_sel{
+	border: none;
+	border-radius: 0px;
+	background: @fond;
+	box-shadow:0px 2px @writing;
+}
+.btn_sel:hover image{
+	transform: scale(2.9);
+}
+.btn_sel:active image{
+		transform: scale(3);
+}
+.btn_sel image{
+	transform: scale(2.5);
+}
+/*---------------------------------*/
+
+/*apparence des entry de GuiWindow*/
+entry{
+	border-color: @hover;
+	border-style: outset;
+	border-width: 1px;
+	border-bottom-left-radius: 8px;
+	border-top-left-radius: 8px;
+	box-shadow: 1px 2px @writing;
+	color: @writing;
+	background-color: @hover;
+}
+/*---------------------------------*/
+
+
+/*CheckButtun*/
+checkbutton>check:first-child{
+	border-color: @writing;
+	border-radius:8px;
+	background: @fond;
+}
+checkbutton>check:hover{
+	background: @hover;
+}
+checkbutton>check:checked{
+	color: @writing;
+ 	background-color: @hover;
+ }
+ .check_label{
+ 	border: 2px outset @hover;
+ 	border-radius: 8px;
+ 	box-shadow: 1px 2px @writing;
+ 	transition-property: opacity, top, width;
+  	transition-duration: 2s, 1s;
+}
+.check_label:hover{
+	transform:scale(1.1);
+}
+.check_label:checked{
+	/*color: @fond;*/
+	background: @hover;
+	box-shadow: -1px -2px @writing;
+	border: 2px inset @hover;
+	margin-top:  2px;
+	transition-property: opacity, left, top, width;
+  	transition-duration: 2s, 1s;
+}
+/*----------------------------------*/
+
+
+/*apparence de l'aperçu de la hierachie de tri */
+.apercu{
+	border: 1px outset @hover;
+ 	border-radius: 8px;
+ 	box-shadow: 1px 2px @writing;
+}
+/*--------------------------------------------*/
+
+/* Coloration de la barre d'état de GuiWindow */
+.infos{
+	border-top: 1px solid @hover;
+	background: @hover;
+}
+.img_info{
+	border: none;
+}
+.info_valide{
+	color:green;
+}
+.info_invalide{
+	color:red;
+}
+.info_updating{
+	color: @writing;
+}
+/*------------------------------------------*/
+.filechooser .view{
+	background: @fond;
+}
+.filechooser .view button{
+	color:@writing;
+	background: @fond;
+}
+.filechooser .view button:selected{
+	color:@writing;
+	background: @fond;
+}
+
+/*popover*/
+.filechooser .background{
+	background: @hover;
+	border-color: @writing;
+}
+.filechooser .background label{
+	color: @writing;
+}
+/*scrolled bar*/
+.filechooser .hovering{
+	color: @writing;
+}
+/*.filechooser .dragging{
+	color: @fond;
+	background: green;
+}*/
+
+.filechooser {
+	background: #E3EFFD;
+	color: @writing;
+}
+.filechooser headerbar{
+	border-color: @writing;
+	color:@writing;
+	background: @fond;
+}
+filechooser .search > text{
+	color:@writing;
+	background: @fond;
+}
+filechooser entry > text{
+	color:@writing;
+	background: @fond;
+}
+
+.filechooser stack{
+	background: @fond;
+}
+.filechooser stack button{
+	color:@writing;
+	background: @hover;
+	border-color: @writer;
+}
+.filechooser stack button:hover{
+	color:@writing;
+	background: @whitesmoke;
+	border-color: @fond;
+}
+.filechooser button{
+	color: @writing;
+	background: @fond;
+	border: none;
+}
+.filechooser button:hover{
+	color: @writing;
+	background: @fond;
+	border: 1px solid @writing;
+}
+.filechooser button:active{
+	color: @hover;
+	background: @writing;
+	border-color: @fond;
+}
+.filechooser button:disabled{
+	color: gray;
+}
+
+
+.filechooser viewport  {
+	color:@writing;
+	background: @fond;
+}
+filechooser treeview:hover{
+	color:@writing;
+	background: @hover;
+}
+filechooser treeview:selected{
+	color: whitesmoke;
+	background: @writing;
+}
+filechooser box{
+/*	background: whitesmoke;*/
+}
+
+filechooser row{
+	color: @writing;
+	background: @hover;
+}
+filechooser row:hover {
+	color:whitesmoke;
+	background: #8BA8CB;
+}
+filechooser row:selected {
+	color: @writing;
+	background: #8BA8CB;
+}
+filechooser separator {
+/*	color:@writing;*/
+	background: @writing;
+}
+
+/*-------------------------*/
+.about headerbar{
+	background-color: @fond;
+
+}
+.about headerbar .toggle{
+	color:@writing;
+	background: @fond;
+}
+.about headerbar .toggle:hover{
+	color:@fond;
+	background: @writing;
+}
+.about headerbar .toggle:checked{
+	color:@writing;
+	background: @hover;
+}
+/*.about .dragging{
+	color: red;
+	background: blue;
+}
+.about .hovering{
+	color: green;
+	background: whitesmoke;
+}
+*/
+.about scrolledwindow{
+	border-color: @writing;
+}
+.about scrolledwindow .view{
+	color: @writing;
+	background: @hover;
+}
+.about scrolledwindow scrollbar trough {
+	background:@fond;
+}
+
+tooltip{
+	background: @hover;
+	border-color: @writing;
+	border-radius: 8px;
+}
+tooltip * {
+	color: darkblue;
+}
+.img_cont{
+	background: white;
+	border: 1px outset @fond;
+	border-radius: 8px;
+	box-shadow: 1px 1px @writing;
+}
+.grid_copy{
+	background: @fond;
+	border: 1px outset @fond;
+	border-radius: 8px;
+	box-shadow: 1px 1px @writing;
+}
+.infos_filess{
+	
+	border: 1px inset @hover;
+	
+	box-shadow: -1px -2px @writing;
+/*	background: @hover;*/
+}
+.is_update{
+	color:green;
+}
+.upgradable{
+	color:red;
+}
+.img_mess{
+	border: none;
+}

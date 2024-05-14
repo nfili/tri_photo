@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="Rename" parent="GtkWindow">
+    <child type="titlebar">
+      <object class="GtkHeaderBar">
+        <property name="show-title-buttons">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="spacing">10</property>
+        <property name="margin-start">12</property>
+        <property name="margin-end">12</property>     
+        <child>
+          <object class="GtkBox">
+            <property name="name">box_conteneur0</property>
+            <child>
+              <object class="GtkBox" id="hbox4">
+                <property name="orientation">vertical</property>
+                <property name="hexpand">1</property>
+                <property name="halign">center</property>
+                <property name="margin-start">10</property>
+                <property name="margin-end">10</property>
+                <child>
+                  <object class="GtkLabel" id="name">
+                     <property name="label" translatable="yes">nom du fichier</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="new_name">
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">horizontal</property>
+            <property name="hexpand">1</property>
+            <property name="halign">center</property>
+            <property name="spacing">12</property>
+            <property name="margin-bottom">14</property>
+            <child>
+              <object class="GtkButton" id="quit">
+                <style>
+                  <class name="btn"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="rec_quit">
+                <style>
+                  <class name="btn"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+ </interface> 

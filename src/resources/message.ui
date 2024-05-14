@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="Message" parent="GtkWindow">
+    <property name="hide_on_close">1</property>
+    <property name="modal">1</property>
+    <property name="resizable">FALSE</property>
+    <!-- conteneur principal -->
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="spacing">10</property>
+        <property name="margin-start">12</property>
+        <property name="margin-end">12</property>
+        <property name="margin-bottom">12</property>
+        <property name="margin-top">12</property> 
+        <!-- contenu du message -->
+        <child>
+          <object class="GtkBox" id="box1">
+            <property name="orientation">horizontal</property>
+            <property name="hexpand">1</property>
+            <property name="halign">center</property>
+            <property name="spacing">10</property>
+            <child>
+              <object class="GtkImage" id="img_mess">
+                <property name="height-request">64</property>
+                <property name="width-request">64</property>
+                <style>
+                  <class name="img_mess"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="lab_mess">
+                <property name="label">test</property>
+              </object>
+            </child>
+          </object>
+        </child>
+     
+    <!-- bouton -->
+    <child>
+      <object class="GtkBox" id="box_btn_mess">
+        <property name="orientation">horizontal</property>
+        <property name="hexpand">1</property>
+        <property name="halign">center</property>
+        <property name="margin-start">10</property>
+        <property name="margin-end">10</property>
+            <child>
+              <object class="GtkButton" id="annuler">
+                <style>
+                  <class name="btn"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="valider">
+                <style>
+                  <class name="btn"/>
+                </style>
+              </object>
+            </child>
+      </object>
+    </child>
+     </object>
+    </child>
+  </template>
+</interface>

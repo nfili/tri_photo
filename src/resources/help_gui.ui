@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="HelpGui" parent="GtkWindow">
+    <property name="destroy-with-parent">1</property>
+    <property name="modal">1</property>
+    <property name="resizable">FALSE</property>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="margin-top">24</property>
+        <property name="margin-bottom">24</property>
+        <property name="margin-start">18</property>
+        <property name="margin-end">18</property>
+        <property name="spacing">18</property>
+        <child>
+          <object class="gtkFrame">
+            <child>
+              <object class="gtkBox">
+                <property name="orientation">vertical</property>
+                <property name="name">box_conteneur0</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label">Bienvenue dans l'aide du programme</property>
+                    <property name="margin-start">12</property>
+                    <property name="hexpand">true</property>
+                    <attributes>
+                      <attribute name="weight" value="PANGO_WEIGHT_ULTRABOLD"/>
+                    </attributes>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        
+        <child>
+          <object class="gtkFrame">
+            <property name="label">Répertoire de travail</property>
+            <child>
+              <object class="gtkBox">
+                <property name="orientation">vertical</property>
+                <property name="name">box_conteneur0</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkGrid">
+                    <property name="margin-top">5</property>
+                    <property name="margin-bottom">5</property>
+                    <property name="margin-start">5</property>
+                    <property name="margin-end">5</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Cette section permet de choisir les répertoires utilisés par le programme pour travailler.</property>
+                        <attributes>
+                          <attribute name="style" value="PANGO_STYLE_ITALIC"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">0</property>
+                          <property name="column-span">2</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">- Source: </property>
+                        <property name="margin-start">0</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">1</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Répertoire contenant les photos à copier.</property>
+                        <property name="margin-end">50</property>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">1</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">- Déstination: </property>
+                        <property name="margin-start">35</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">2</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Répertoire ou seront copiées les photos.</property>
+                        <property name="margin-end">56</property>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">2</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">- Fichiers trouvés: </property>
+                        <property name="margin-start">63</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">3</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Indique le nombre de fichiers trouvés,</property>
+                        <property name="margin-end">66</property>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">3</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">la taille des fichiers à copier et</property>
+                        <property name="margin-end">118</property>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">4</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes"> la taille du répertoire de destination.</property>
+                        <property name="margin-end">85</property>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">5</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">- Information: </property>
+                        <property name="margin-start">36</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">6</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Indique l'état du programme.</property>
+                        <property name="margin-end">125</property>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">6</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object> 
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+
+        <child>
+          <object class="gtkFrame">
+            <property name="label">Fichiers à trouver</property>
+            <child>
+              <object class="gtkBox">
+                <property name="orientation">vertical</property>
+                <property name="name">box_conteneur0</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Cette section permet de sélectionner le type de fichier image à chercher.</property>
+                    <property name="margin-top">5</property>
+                    <property name="margin-bottom">5</property>
+                    <property name="margin-start">5</property>
+                    <property name="margin-end">5</property>
+                    <attributes>
+                      <attribute name="style" value="PANGO_STYLE_ITALIC"/>
+                    </attributes>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+
+        <child>
+          <object class="gtkFrame">
+            <property name="label">Aborescence du tri</property>
+            <child>
+              <object class="gtkBox">
+                <property name="orientation">vertical</property>
+                <property name="name">box_conteneur0</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkGrid">
+                    <property name="margin-top">5</property>
+                    <property name="margin-bottom">5</property>
+                    <property name="margin-start">5</property>
+                    <property name="margin-end">5</property>
+                    <property name="hexpand">true</property>
+                    <property name="halign">center</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Cette section permet de sélectionner l'arborescence voulue pour le tri des photos,
+si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</property>
+                        <attributes>
+                          <attribute name="style" value="PANGO_STYLE_ITALIC"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">0</property>
+                          <property name="column-span">2</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">- Année: </property>
+                        <property name="margin-start">13</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">1</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Crée un repertoire en fonction de l'année de la prise de vue.</property>
+                        <property name="margin-end">40</property>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">1</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">- Mois: </property>
+                        <property name="margin-start">3</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">2</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Crée un (sous-)repertoire en fonction du mois de la prise de vue.</property>
+                        <property name="margin-end">16</property>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">2</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">- Jours: </property>
+                        <property name="margin-start">4</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">3</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Crée un (sous-)repertoire en fonction du jours de la prise de vue.</property>
+                        <property name="margin-end">14</property>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">3</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">- Lieu: </property>
+                        <property name="margin-start">0</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">4</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Crée un (sous-)repertoire en fonction du lieu de la prise de vue.</property>
+                        <property name="margin-end">24</property>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">4</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object> 
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+
+        <child>
+          <object class="gtkFrame">
+            <property name="label">Traitement</property>
+            <child>
+              <object class="gtkBox">
+                <property name="orientation">vertical</property>
+                <property name="name">box_conteneur0</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkGrid">
+                    <property name="margin-top">5</property>
+                    <property name="margin-bottom">5</property>
+                    <property name="margin-start">5</property>
+                    <property name="margin-end">5</property>
+                    <property name="hexpand">true</property>
+                    <property name="halign">center</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Cette section permet de selectionner les actions à effectuer aprés la fin du tri.</property>
+                        <attributes>
+                          <attribute name="style" value="PANGO_STYLE_ITALIC"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">0</property>
+                          <property name="column-span">2</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">- Renomer les fichiers: </property>
+                        <property name="margin-start">0</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">1</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Permet de renomer les fichiers triés.</property>
+                        <property name="margin-end">22</property>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">1</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">- Supprimer les sources: </property>
+                        <property name="margin-start">8</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">2</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Supprime les sources en temps réel.</property>
+                        <property name="margin-end">28</property>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">2</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">- Choisir au fur et à mesure: </property>
+                        <property name="margin-start">33</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">3</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Permet de séléctionner l'action à</property>
+                        <property name="margin-end">47</property>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">3</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">effectuer en temps réel.</property>
+                        <property name="margin-end">98</property>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">4</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object> 
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        
+        <child>
+          <object class="gtkBox">
+            <property name="halign">center</property>
+              <child>
+                <object class="GtkButton" id="on_help_gui">
+                  <child>
+                    <object class="GtkBox">
+                      <property name="orientation">horizontal</property>
+                      <property name="spacing">5</property>
+                      <child>
+                        <object class="GtkLabel">
+                          <property name="label">Ok</property>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkImage">
+                          <property name="resource">/org/gtk_rs/tri_photo/ok_hand.png</property>
+                        </object>
+                      </child>
+                    </object>
+                  </child>
+                  <style>
+                    <class name="btn"/>
+                  </style>
+                </object>
+              </child>
+          </object>
+        </child>
+        
+      </object>
+    </child>
+  </template>
+</interface>

@@ -1,0 +1,36 @@
+[package]
+name = "tri_photo"
+version = "0.1.0"  #:version
+authors = ["Nicolas Filippozzi <nicolasfilippozzi@gmail.com>"]
+description = """
+tri_photo is a photo/image copy program, it can be installed on linux, mac or window.
+"""
+categories = ["Multimedia"]
+autotests = false
+license = "gpl2"
+edition = "2021"
+rust-version = "1.75"
+
+[[bin]]
+path="src/main.rs"
+name="tp"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+kamadak-exif = "0.5.5"
+fs2 = "0.4.3"
+byte-unit = "4.0.14"
+gtk = { version = "0.7.3", package = "gtk4" }
+glib="0.18.3"
+gio = "0.18.3"
+image = "0.24.7"
+conv = "0.3.2"
+regex = "1.10.2"
+chrono = "0.4.31"
+reverse_geocoder = "4.1.1"
+
+[build-dependencies]
+glib-build-tools = "0.18.0"
+
+

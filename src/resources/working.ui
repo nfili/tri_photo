@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="Working" parent="GtkWindow">
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="header_bar">
+        <property name="show-title-buttons">True</property>
+        <child type="start">
+          <object class="GtkImage" id="image_header_bar" />
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="spacing">10</property>
+        <!-- Titre de la fenêtre -->
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">horizontal</property>
+            <property name="hexpand">true</property>
+            <style>
+              <class name="header_bar"/>
+            </style>
+              <child>
+                <object class="GtkImage">
+                  <property name="resource">/org/gtk_rs/tri_photo/image.png</property>
+                  <property name="margin-start">0</property>
+                  <property name="width-request">32</property>
+                </object>
+              </child>
+              <child>
+                <object class="GtkLabel" id="title">
+                  <property name="hexpand">true</property>
+                  <property name="halign">center</property>
+                  <property name="label" translatable="yes">Copie en cours, veuiller patienter</property>
+                </object>
+              </child>
+              <child>
+              <object class="GtkLabel" id="progress_status">
+                <property name="label">en enttente de données</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <!-- Information du fichier copié -->
+        <child>
+          <object class="GtkFrame">
+            <property name="margin-top">10</property>
+            <property name="margin-bottom">10</property>
+            <property name="margin-start">10</property>
+            <property name="margin-end">10</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="valign">start</property>
+            <child type="label">
+              <object class="GtkLabel" id="data_name">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">none</property>
+                <property name="margin-start">12</property>
+              </object>
+            </child>
+            <!--Data of file-->
+            <child>
+              <object class="GtkBox">
+                <property name="name">box_conteneur0</property>
+                <child>
+                  <object class="GtkBox" id="hbox4">
+                    <property name="orientation">horizontal</property>
+                    <property name="hexpand">1</property>
+                    <property name="halign">center</property>
+                    <property name="spacing">10</property>
+                    <property name="margin-top">14</property>
+                    <property name="margin-bottom">8</property>
+                    <property name="margin-start">10</property>
+                    <property name="margin-end">10</property>
+                    <child>
+                      <object class="GtkPicture" id="data_image">
+                        <style>
+                          <class name="img_cont"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                     <object class="GtkGrid">
+                      <property name="width-request">300</property>
+                      <property name="column-spacing">5</property>
+                      <style>
+                        <class name="grid_copy"/>
+                      </style>
+                      <child>
+                        <object class="GtkLabel">
+                          <property name="label">Chemin</property>
+                          <property name="halign">end</property>
+                          <property name="margin-top">8</property>
+                          <layout>
+                              <property name="column">0</property>
+                              <property name="row">1</property>
+                          </layout>
+                        </object>
+                      </child>
+                       <child>
+                        <object class="GtkLabel">
+                          <property name="label">:</property>
+                          <layout>
+                              <property name="column">1</property>
+                              <property name="row">1</property>
+                          </layout>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkLabel" id="data_path">
+                          <property name="label">none</property>
+                          <property name="halign">end</property>
+                          <property name="margin-end">8</property>
+                          <property name="hexpand">1</property>
+                          <layout>
+                              <property name="column">2</property>
+                              <property name="row">1</property>
+                          </layout> 
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkLabel">
+                          <property name="label">Date</property>
+                          <property name="halign">end</property>
+                          <layout>
+                              <property name="column">0</property>
+                              <property name="row">2</property>
+                          </layout>
+                        </object>
+                      </child>
+                       <child>
+                        <object class="GtkLabel">
+                          <property name="label">:</property>
+                          <layout>
+                              <property name="column">1</property>
+                              <property name="row">2</property>
+                          </layout>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkLabel" id="data_date">
+                          <property name="label">none</property>
+                          <property name="halign">end</property>
+                          <property name="margin-end">8</property>
+                          <layout>
+                              <property name="column">2</property>
+                              <property name="row">2</property>
+                          </layout> 
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkLabel">
+                          <property name="label">Localisation</property>
+                          <property name="halign">end</property>
+                          <property name="margin-start">8</property>
+                          <layout>
+                              <property name="column">0</property>
+                              <property name="row">3</property>
+                          </layout>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkLabel">
+                          <property name="label">:</property>
+                          <layout>
+                              <property name="column">1</property>
+                              <property name="row">3</property>
+                          </layout>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkLabel" id="data_geoloc">
+                          <property name="label">none</property>
+                          <property name="halign">end</property>
+                          <property name="margin-end">8</property>
+                          <layout>
+                              <property name="column">2</property>
+                              <property name="row">3</property>
+                          </layout> 
+                        </object>
+                      </child>
+                      <!-- copy of file -->
+                      <child>
+                        <object class="GtkLabel">
+                          <property name="label" translatable="yes">Status</property>
+                          <property name="halign">end</property>
+                          <property name="margin-start">8</property>
+                          <layout>
+                              <property name="column">0</property>
+                              <property name="row">4</property>
+                          </layout>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkLabel">
+                          <property name="label">:</property>
+                          <layout>
+                              <property name="column">1</property>
+                              <property name="row">4</property>
+                          </layout>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkLabel" id="copy_status">
+                          <property name="label" translatable="yes">none</property> 
+                          <property name="halign">end</property>
+                          <property name="margin-end">8</property>
+                          <layout>
+                              <property name="column">2</property>
+                              <property name="row">4</property>
+                          </layout>
+                        </object>
+                      </child>
+                    </object>
+                  </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>        
+        <!-- progress bar copy of full files -->
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="hexpand">1</property>
+            <property name="halign">center</property>
+            <property name="spacing">12</property>
+            <child>
+              <object class="GtkBox" id="child_files">
+                <property name="orientation">horizontal</property>
+                <property name="hexpand">1</property>
+                <child>
+                    <object class="GtkLabel">
+                      <property name="label">0</property>
+                    </object>
+                </child>
+                <child>
+                  <object class="GtkProgressBar" id="progress_bar">
+                    <property name="width-request">300</property>
+                    <property name="hexpand">1</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="progress_end">
+                    <property name="label">100</property>
+                  </object>
+                </child>
+              </object> 
+            </child>
+          </object>
+        </child>
+        <!--button action-->
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">horizontal</property>
+            <property name="hexpand">1</property>
+            <property name="halign">center</property>
+            <property name="spacing">12</property>
+            <property name="margin-bottom">14</property>
+            <child>
+              <object class="GtkButton" id="quit">
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">horizontal</property>
+                    <property name="hexpand">1</property>
+                    <property name="halign">center</property>
+                    <property name="spacing">5</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="resource">/org/gtk_rs/tri_photo/quit.png</property>
+                        <property name="icon_size">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label">Quitter</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <style>
+                  <class name="btn"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="rec_quit">
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">horizontal</property>
+                    <property name="hexpand">1</property>
+                    <property name="halign">center</property>
+                    <property name="spacing">5</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="resource">/org/gtk_rs/tri_photo/save_and_quit.png</property>
+                        <property name="icon_size">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label">Sauvegarder et quitter</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <style>
+                  <class name="btn"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object> 
+    </child>
+  </template>
+ </interface> 

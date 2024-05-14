@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/gtk_rs/tri_photo/">
+    <file compressed="true" preprocess="xml-stripblanks">popup_accueil.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">rename.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">working.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">message.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">help_gui.ui</file>
+    <file>image.png</file>
+    <file>suivant.png</file>
+    <file>retour.png</file>
+    <file>quit.png</file>
+    <file>hb_quit.png</file>
+    <file>load.png</file>
+    <file>load.gif</file>
+    <file>help.png</file>
+    <file>about.png</file>
+    <file>apercu_year.png</file>
+    <file>apercu_month.png</file>
+    <file>apercu_day.png</file>
+    <file>apercu_geo.png</file>
+    <file>apercu_year-month.png</file>
+    <file>apercu_year-day.png</file>
+    <file>apercu_year-geo.png</file>
+    <file>apercu_year-month-day.png</file>
+    <file>apercu_year-month-geo.png</file>
+    <file>apercu_year-day-geo.png</file>
+    <file>apercu_year-month-day-geo.png</file>
+    <file>apercu_month-day.png</file>
+    <file>apercu_month-geo.png</file>
+    <file>apercu_month-day-geo.png</file>
+    <file>apercu_day-geo.png</file>
+    <file>apercu_none.png</file>
+    <file>rep_chooser.png</file>
+    <file>valide.png</file>
+    <file>invalide.png</file>
+    <file>icone_search.gif</file>
+    <file>icone_search.png</file>
+    <file>icone_search_ok.png</file>
+    <file>supprimer.png</file>
+    <file>copier.png</file>
+    <file>save.png</file>
+    <file>save_and_quit.png</file>
+    <file>renomer.png</file>
+    <file>attention.png</file>
+    <file>information.png</file>
+    <file>ok_hand.png</file>
+    <file>deplacer.png</file>
+    <file>gestion.png</file>
+    <file>gestion_deplacer.png</file>
+    <file>parametre.png</file>
+</gresource>
+<gresource prefix="/org/gtk_rs/tri_photo/icons/16x16/actions">
+  <file>image.ico</file>
+</gresource>
+</gresources>

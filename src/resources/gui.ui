@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GuiWindow" parent="GtkWindow">
+    <property name="destroy-with-parent">1</property>
+    <property name="name">gui</property>
+    <property name="resizable">False</property>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="name">vbox1</property>
+        <property name="spacing">18</property>
+        <property name="margin-top">24</property>
+        <property name="margin-bottom">24</property>
+        <property name="margin-start">12</property>
+        <property name="margin-end">12</property>
+        <!-- Répertoire de travail-->
+        <child>
+          <object class="GtkFrame">
+            <property name="can-focus">False</property>
+            <property name="valign">start</property>
+            <child type="label">
+              <object class="GtkLabel">
+                <property name="hexpand-set">true</property>
+                <property name="hexpand">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Répertoire de travail</property>
+                <property name="name">label_frame</property>
+                <property name="margin-start">12</property>
+              </object>
+            </child>
+            <child>
+              <object class="gtkBox">
+                <property name="orientation">vertical</property>
+                <property name="name">box_conteneur0</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkGrid">
+                    <property name="column-spacing">14</property>
+                    <property name="row-spacing">14</property>
+                    <property name="margin-top">14</property>
+                    <property name="margin-bottom">8</property>
+                    <property name="margin-start">12</property>
+                    <property name="margin-end">12</property>
+                    <child>
+                      <object class="GtkEntry" id="source">
+                        <property name="width-request">310</property>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">0</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="btn_source">
+                        <property name="name">btn_source</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="resource">/org/gtk_rs/tri_photo/rep_chooser.png</property>
+                          </object>
+                        </child>
+                        <style>
+                          <class name="btn_sel"/>
+                        </style>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">0</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="dest">
+                        <property name="width-request">310</property>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">1</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="btn_dest">
+                        <property name="name">btn_dest</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="resource">/org/gtk_rs/tri_photo/rep_chooser.png</property>
+                          </object>
+                        </child>
+                        <style>
+                          <class name="btn_sel"/>
+                        </style>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">1</property>
+                        </layout>
+                      </object>
+                    </child>  
+                  </object>
+                </child>
+                <!-- Information -->
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">horizontal</property>
+                    <property name="margin-start">12</property>
+                    <property name="margin-end">12</property>
+                    <property name="margin-bottom">10</property>
+                    <property name="halign">center</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Fichiers trouvés: </property>
+                        <property name="margin-start">0px</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="nb_file">
+                        <property name="name">nb_file</property>
+                        <property name="label">0</property>
+                        <!-- <property name="width-request">100px</property> -->
+                        <property name="margin-end">0px</property>
+                      </object>
+                    </child>
+                    <!-- <style>
+                          <class name="infos_filess"/>
+                    </style> -->
+                    <child>
+                      <object class="GtkBox">
+                        <property name="orientation">horizontal</property>
+                        <property name="margin-start">12</property>
+                        <property name="margin-end">12</property>
+                        <property name="halign">start</property>
+                        <child>
+                          <object class="GtkLabel" id="tt_file">
+                            <property name="name">tt_file</property>
+                            <property name="label">0</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="tt_dur">
+                            <property name="label" translatable="yes">/0GiB</property>
+                            
+                          </object>
+                        </child>
+                        <!-- <style>
+                              <class name="infos_filess"/>
+                        </style> -->
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">horizontal</property>
+                    <property name="margin-bottom">0</property>
+                    <child>
+                      <object class="GtkLabel" id="info">
+                        <property name="name">info</property>
+                        <property name="label">en attente de séléction</property>
+                        <property name="width-request">310</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="gtkPicture" id="img_info">
+                        <property name="width-request">16</property>
+                        <property name="height-request">16</property>
+                        <property name="name">img_info</property>
+                        <style>
+                          <class name="img_info"/>
+                        </style>
+                      </object>
+                    </child>
+                    <style>
+                          <class name="infos"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <!-- Fichier à trouver-->
+        <child>
+          <object class="GtkFrame">
+            <property name="can-focus">False</property>
+            <property name="valign">start</property>
+            <child type="label">
+              <object class="GtkLabel">
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Fichier à trouver</property>
+                <property name="margin-start">12</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="name">box_conteneur0</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">8</property>
+                    <property name="margin-bottom">8</property>
+                    <child>
+                      <object class="GtkBox" id="hbox4">
+                        <property name="orientation">horizontal</property>
+                        <property name="spacing">10</property>
+                        <property name="hexpand">1</property>
+                        <property name="halign">center</property>
+                        <property name="margin-top">14</property>
+                        <child>
+                          <object class="GtkCheckButton" id="png">
+                            <property name="label">png</property>
+                            <style>
+                              <class name="check_label"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="jpg">
+                            <property name="label">jpg</property>
+                            <style>
+                              <class name="check_label"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="bmp">
+                            <property name="label">bmp</property>
+                            <style>
+                              <class name="check_label"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="tiff">
+                            <property name="label">tiff</property>
+                            <style>
+                              <class name="check_label"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="gif">
+                            <property name="label">gif</property>
+                            <style>
+                              <class name="check_label"/>
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="only_photo">
+                        <property name="label">Seulement les photographies</property>
+                        <property name="halign">center</property>
+                        <property name="width-request">150px</property>
+                        <style>
+                          <class name="check_label"/>
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <!-- Aborescence du tri -->
+        <child>
+          <object class="GtkFrame">
+            <property name="can-focus">False</property>
+            <property name="valign">start</property>
+            <child type="label">
+              <object class="GtkLabel">
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Aborescence du tri</property>
+                <property name="margin-start">12</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="name">box_conteneur0</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkBox" id="hbox5">
+                    <property name="orientation">horizontal</property>
+                    <property name="hexpand">true</property>
+                    <property name="margin-top">14</property>
+                    <property name="margin-bottom">8</property>
+                    <property name="halign">center</property>
+                    <property name="homogeneous">1</property>
+                    <property name="spacing">60</property>
+                    <child>
+                      <object class="GtkBox" id="vbox2">
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">8</property>
+                        <property name="margin-top">12</property>               
+                        <child>
+                          <object class="GtkCheckButton" id="year">
+                            <property name="label">Année</property>
+                            <style>
+                              <class name="check_label"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="month">
+                            <property name="label">Mois</property>
+                            <style>
+                              <class name="check_label"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="day">
+                            <property name="label">Jour</property>
+                            <style>
+                              <class name="check_label"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="geo_loc">
+                            <property name="label">Lieu</property>
+                            <style>
+                              <class name="check_label"/>
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox" id="vbox4">
+                        <property name="orientation">vertical</property>
+                        <property name="margin-top">12</property>
+                        <property name="hexpand">1</property>
+                        <style>
+                          <class name="apercu"/>
+                        </style>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label">Aperçu</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkImage" id="apercu">
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="letter">
+                    <property name="label">Mois en nom</property>
+                    <property name="halign">center</property>
+                    <property name="hexpand">false</property>
+                    <property name="margin-bottom">8</property>
+                    <style>
+                      <class name="check_label"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <!-- Option d'après tri -->
+        <child>
+          <object class="GtkFrame">
+            <property name="can-focus">False</property>
+            <property name="valign">start</property>
+            <child type="label">
+              <object class="GtkLabel">
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Option d'après tri</property>
+                <property name="margin-start">12</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="name">box_conteneur0</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkBox" id="vbox3">
+                    <property name="orientation">vertical</property>
+                    <property name="margin-top">14</property>
+                    <property name="margin-bottom">8</property>
+                    <property name="spacing">10</property> 
+                    <property name="halign">center</property>
+                    <property name="hexpand">true</property>
+                    <child>
+                      <object class="GtkCheckButton" id="rename">
+                        <property name="label">Renommer les photos</property>
+                        <style>
+                          <class name="check_label"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="delete">
+                        <property name="label">Supprimer les sources</property>
+                        <style>
+                          <class name="check_label"/>
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <!-- BUTTON GESTION -->
+        <child>
+          <object class="GtkBox" id="hbox8">
+            <property name="orientation">horizontal</property>
+            <property name="halign">end</property>
+            <child type="action">
+              <object class="GtkButton" id="annuler">
+                <property name="margin-end">12</property>
+                <style>
+                  <class name="btn"/>
+                </style>
+                <property name="name">annuler</property>
+                <child>
+                  <object class="GtkBox">
+                   <property name="orientation">horizontal</property>
+                   <child>
+                    <object class="GtkImage">
+                      <property name="resource">/org/gtk_rs/tri_photo/quit.png</property>
+                    </object>
+                  </child>
+                  <child>
+                    <object class="GtkLabel">
+                      <property name="label" translatable="yes">Quitter</property>
+                    </object>
+                  </child>
+                </object>
+              </child>
+            </object>
+          </child>
+          <child>
+            <object class="GtkButton" id="valider">
+              <property name="sensitive">false</property>
+              <style>
+                <class name="btn"/>
+              </style>
+              <property name="name">valider</property>
+              <child>
+                <object class="GtkBox">
+                 <property name="orientation">horizontal</property>
+                 <child>
+                  <object class="GtkImage">
+                    <property name="resource">/org/gtk_rs/tri_photo/suivant.png</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Démarrer</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</child>
+</template>
+</interface>
