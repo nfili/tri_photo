@@ -1,7 +1,8 @@
-# tri_photo ![Static Badge](https://img.shields.io/badge/Rust-1.75.0-%2Cblue?style=plastic&logo=Rust)
+# tri_photo 
 ***
 
-=================
+![Static Badge](https://img.shields.io/badge/Rust-1.75.0-%2Cblue?style=plastic&logo=Rust)
+---
 
 ## Table of Contents
 1. [A Propos](#à-propos)
