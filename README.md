@@ -1,7 +1,7 @@
-# tri_photo 
+# tri_photo ![Static Badge](https://img.shields.io/badge/Rust-1.75.0-%2Cblue?style=plastic&logo=Rust)
 ***
+ ![left 50%](https://github.com/nfili/tri_photo/blob/develop/image/acceuil.png)
 
-![Static Badge](https://img.shields.io/badge/Rust-1.75.0-%2Cblue?style=plastic&logo=Rust)
 ---
 
 ## Table of Contents
