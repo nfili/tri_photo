@@ -1,4 +1,4 @@
-# ![logo 20%](https://github.com/nfili/tri_photo/blob/develop/src/resources/icons/16x16/actions/image.ico) tri_photo ![Static Badge](https://img.shields.io/badge/Rust-1.75.0-%2Cblue?style=plastic&logo=Rust)
+# ![logo](https://github.com/nfili/tri_photo/blob/develop/src/resources/icons/16x16/actions/image.ico =32x32) tri_photo ![Static Badge](https://img.shields.io/badge/Rust-1.75.0-%2Cblue?style=plastic&logo=Rust)
 ***
  ![left 50%](https://github.com/nfili/tri_photo/blob/develop/image/acceuil.png)
  ![right 50%](https://github.com/nfili/tri_photo/blob/develop/image/configuration.png)
