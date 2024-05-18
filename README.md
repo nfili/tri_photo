@@ -54,7 +54,7 @@ Pour le mement seul archlinux a été testé
         git clone https://github.com/nfili/tri_photo.git
         cd tri_photo
         cargo build --release
-        cd build/
+        cp target/release/tp /path/of/your_choice
 ```
 </details>
 
