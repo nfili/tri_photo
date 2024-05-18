@@ -63,9 +63,9 @@ Pour le mement seul archlinux a été testé
 ### Répertoire de travail
 
 * répertoire source : permet de sélectionner le répertoire où le programme doit chercher
-        - exemple : /home/{user}/Downloads
+  - exemple : /home/{user}/Downloads
 * répertoire de desticnation : permet de choisir l'emplacement où les fichiers seront copier ou déplacer
-        - exemple : /home/{user}/save
+  - exemple : /home/{user}/save
 
 ### Fichiers à trouver
 
@@ -119,5 +119,5 @@ Contactez-moi par email: [nicolasfilippozzi@gmail.com](mailto:nicolasfilippozzi@
 ## Licence
 
 Voir les fichiers :
-* [LICENSE](./LICENSE.md) du dépôt.
-* [3rdparty](./3rdparty.md) du dépôt.
+* [LICENSE-MIT](./LICENSE-MIT.md) du dépôt.
+* [LICENCE-APACHE](./LICENCE-APACHE.md) du dépôt.
