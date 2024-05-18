@@ -14,10 +14,8 @@ Il permet de regrouper, dans un meme répertoire hiérachisé de destination, de
 - 🚀 [Installation](#installation)
 - 🛠️ [Utilisation](#utilisation)
 - 🤝 [Contributeurs](#contributeurs)
-- 🏗️ [Construit avec](#construit-avec)
-- 📚 [Documentation](#documentation)
 - 💬 [Retour](#retour)
-- 🏷️ [Gestion des versions](#gestion-des-versions)
+- 🏷️ [Historique des versions](#historique-des-versions)
 - 📝 [Licence](#licence)
 
 ## Prérequis
@@ -50,7 +48,7 @@ Pour le mement seul archlinux a été testé
 </details>
 
 <details>
-    <summary><img src="image/logo.ico"> autre linux</summary>
+    <summary><img src="image/linux.ico"> autre linux</summary>
 
 ```
         git clone https://github.com/nfili/tri_photo.git
@@ -114,12 +112,12 @@ Contactez-moi par email: [nicolasfilippozzi@gmail.com](mailto:nicolasfilippozzi@
     
 </details>
 
-## Gestion des versions
-
-Afin de maintenir un cycle de publication claire et de favoriser la rétrocompatibilité, la dénomination des versions suit la spécification décrite par la [Gestion sémantique de version](https://semver.org/lang/fr/)
-
-Les versions disponibles ainsi que les journaux décrivant les changements apportés sont disponibles depuis [la page des Releases][mettre le lien ici].
+## Historique des versions
+* 0.1
+  * Premiére version
 
 ## Licence
 
-Voir le fichier [LICENSE](./LICENSE.md) du dépôt.
+Voir les fichiers :
+* [LICENSE](./LICENSE.md) du dépôt.
+* [3rdparty](./3rdparty.md) du dépôt.
