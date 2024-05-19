@@ -411,6 +411,7 @@ impl GuiWindow{
             .default_height(HEIGHT)
             .transient_for(parent)
             .hide_on_close(true)
+            .icon_name("tp")
             .build();
         let mut rsc = Rsc::new();
 		let source = Self::create_entry(ENTRY_SOURCE);
@@ -533,20 +534,18 @@ impl GuiWindow{
         hb_about.set_cursor_from_name(Some("pointer")); 
         hb_about.connect_clicked( move |obj|{
             obj.set_cursor_from_name(Some("grabbing"));
-            let mut rsc = Rsc::new();
-            let logo= gtk::gdk::Texture::from_resource(rsc.mod_path("image.png").unwrap());
             let about = gtk::AboutDialog::new();
             about.set_css_classes(&["about"]);
             about.set_hide_on_close(true);
             about.set_version(Some(VERSION));
             about.set_program_name(Some("TriPhoto"));
-            about.set_license_type(gtk::License::Gpl30);
+            about.set_license_type(gtk::License::MitX11);
             about.set_comments(Some("Programme de tri pour les photos"));
             about.set_copyright(Some("© 2023 Nicolas Filippozzi"));
             about.set_artists(&["Nicolas Filippozzi","https://thenounproject.com/browse/icons/term/like/ Ilham Fitrotul Hayat"]);
             about.set_authors(&[ "Nicolas Filippozzi"]);
             about.set_documenters(&["Nicolas Filippozzi"]);
-            about.set_logo(Some(&logo));
+            about.set_logo_icon_name(Some("tp"));
             
             about.show();
             obj.set_cursor_from_name(Some("pointer"));

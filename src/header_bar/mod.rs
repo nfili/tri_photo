@@ -63,7 +63,7 @@ fn base(title: &str)->Box{
 
 fn img() -> Image {
 		gtk::Image::builder()
-    	.resource("/org/gtk_rs/tri_photo/image.png")
+    	.resource("/org/gtk_rs/tri_photo/logo.png")
     	.margin_start(0)
     	.width_request(32)
     	.build()

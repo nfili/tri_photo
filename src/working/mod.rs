@@ -86,6 +86,7 @@ impl Working {
          	.property("application", app)
          	.property("default-width", WIDTH)
          	.property("default-height", HEIGHT)
+         	.property("icon-name","tp")
          	.build();
 
          working.set_option(option);

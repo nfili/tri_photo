@@ -2,11 +2,7 @@ mod imp;
 
 use gio::prelude::ApplicationExt;
 use gtk::{
-    glib::{self},
-    subclass::prelude::ObjectSubclassIsExt,
-    traits::{ButtonExt,BoxExt,},
-    prelude::GtkWindowExt,
-    Image
+    glib, prelude::GtkWindowExt, subclass::prelude::ObjectSubclassIsExt, traits::{BoxExt, ButtonExt}, Image
 };
 use crate::{app::{WIDTH,Cmd},header_bar};
 
@@ -24,8 +20,9 @@ impl PopupAccueil{
             .property("default-width", WIDTH)
             .property("transient-for", &parent)
             .property("hide-on-close", true)
+            .property("icon-name", "tp")
             .build();
-
+            
             pop.imp().action.replace(Cmd::None);
             pop
     }

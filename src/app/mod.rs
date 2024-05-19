@@ -3,7 +3,7 @@
     initialise les différentes fenetres du programme, les constantes de fonctionnement
     et la langue
     * */
-    use std::{process::exit,path::PathBuf, io::{BufReader, BufRead}};
+    use std::{io::{BufRead, BufReader}, path::{Path, PathBuf}, process::exit};
     use gtk::{
         traits::{GtkWindowExt, FileChooserExt},
         prelude::{GtkApplicationExt,ApplicationExt,ApplicationExtManual,DialogExtManual,FileExt},
@@ -63,9 +63,25 @@
             .build();
             window.set_default_size(WIDTH,HEIGHT);
             let icon_theme= gtk::IconTheme::default();
-            icon_theme.set_theme_name(Some("logo"));
-            icon_theme.add_resource_path("/org/gtk_rs/tri_photo/icons");
-            window.set_icon_name(Some("logo"));
+            icon_theme.set_theme_name(Some("hicolor"));
+            icon_theme.set_search_path(&[
+                Path::new("/usr/share/icons/hicolor/8x8/apps/"),
+                Path::new("/usr/share/icons/hicolor/16x16/apps/"),
+                Path::new("/usr/share/icons/hicolor/20x20/apps/"),
+                Path::new("/usr/share/icons/hicolor/22x22/apps/"),
+                Path::new("/usr/share/icons/hicolor/24x24/apps/"),
+                Path::new("/usr/share/icons/hicolor/32x32/apps/"),
+                Path::new("/usr/share/icons/hicolor/36x36/apps/"),
+                Path::new("/usr/share/icons/hicolor/44x44/apps/"),
+                Path::new("/usr/share/icons/hicolor/48x48/apps/"),
+                Path::new("/usr/share/icons/hicolor/64x64/apps/"),
+                Path::new("/usr/share/icons/hicolor/72x72/apps/"),
+                Path::new("/usr/share/icons/hicolor/80x80/apps/"),
+                Path::new("/usr/share/icons/hicolor/128x128/apps/"),
+                Path::new("/usr/share/icons/hicolor/256x256/apps/"),
+                Path::new("/usr/share/icons/hicolor/512x512/apps/")]);
+                
+            window.set_icon_name(Some("tp"));
             let action_close = gtk::gio::SimpleAction::new("close", None);
             action_close.connect_activate(glib::clone!(@weak window, @weak app =>  move |_, _| {
                 window.close();
