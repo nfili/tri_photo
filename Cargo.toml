@@ -7,7 +7,7 @@ tri_photo is a photo/image copy program, it can be installed on linux, mac or wi
 """
 categories = ["Multimedia"]
 autotests = false
-license = "gpl2"
+license = "MIT"
 edition = "2021"
 rust-version = "1.75"
 
