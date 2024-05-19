@@ -6,7 +6,6 @@
     <file compressed="true" preprocess="xml-stripblanks">working.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">message.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">help_gui.ui</file>
-    <file>image.png</file>
     <file>suivant.png</file>
     <file>retour.png</file>
     <file>quit.png</file>
@@ -49,8 +48,6 @@
     <file>gestion.png</file>
     <file>gestion_deplacer.png</file>
     <file>parametre.png</file>
-</gresource>
-<gresource prefix="/org/gtk_rs/tri_photo/icons/16x16/actions">
-  <file>image.ico</file>
-</gresource>
+    <file>logo.png</file>
+  </gresource>
 </gresources>
