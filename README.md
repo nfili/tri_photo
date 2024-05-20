@@ -43,7 +43,7 @@ Pour le mement seul archlinux a été testé
         git clone https://emplacement/du/PKGBUILD
         cd tri_photo
         makepkg
-        sudo pacman -U tri_photo.extensionde pacman
+        sudo pacman -U tri_photo-[version]-1.pkg.tar.zst
 ```
 </details>
 
@@ -53,8 +53,8 @@ Pour le mement seul archlinux a été testé
 ```
         git clone https://github.com/nfili/tri_photo.git
         cd tri_photo
-        cargo build --release
-        cp target/release/tp /path/of/your_choice
+        cargo build --release 
+        Install -dm755 target/release/tp /path/of/your_choice
 ```
 </details>
 
@@ -113,7 +113,7 @@ Contactez-moi par email: [nicolasfilippozzi@gmail.com](mailto:nicolasfilippozzi@
 </details>
 
 ## Historique des versions
-* 0.1
+* 1.0.0
   * Premiére version
 
 ## Licence
