@@ -535,6 +535,8 @@ impl GuiWindow{
         hb_about.connect_clicked( move |obj|{
             obj.set_cursor_from_name(Some("grabbing"));
             let about = gtk::AboutDialog::new();
+            about.set_modal(true);
+            about.set_icon_name(Some("tp"));
             about.set_css_classes(&["about"]);
             about.set_hide_on_close(true);
             about.set_version(Some(VERSION));

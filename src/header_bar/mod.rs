@@ -63,7 +63,9 @@ fn base(title: &str)->Box{
 
 fn img() -> Image {
 		gtk::Image::builder()
-    	.resource("/org/gtk_rs/tri_photo/logo.png")
+		// .icon_name("tp")
+		.file("/usr/share/icons/hicolor/32x32/apps/tp.png")
+    	// .resource("/org/gtk_rs/tri_photo/logo.png")
     	.margin_start(0)
     	.width_request(32)
     	.build()

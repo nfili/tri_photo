@@ -40,7 +40,7 @@ Pour le mement seul archlinux a été testé
     <summary><img src="https://github.com/archlinux/archwiki/blob/master/extensions/ArchLinux/modules/favicon.ico"> Archlinux</summary>
 
 ```
-        git clone https://emplacement/du/PKGBUILD
+        git clone https://gitlab.archlinux.org/nfili/tri_photo.git
         cd tri_photo
         makepkg
         sudo pacman -U tri_photo-[version]-1.pkg.tar.zst
