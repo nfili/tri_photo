@@ -7,15 +7,13 @@ tri_photo is a photo/image copy program, it can be installed on linux, mac or wi
 """
 categories = ["Multimedia"]
 autotests = false
-license = "MIT"
+license = "MIT,APACHE"
 edition = "2021"
 rust-version = "1.75"
 
 [[bin]]
 path="src/main.rs"
 name="tp"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 kamadak-exif = "0.5.5"

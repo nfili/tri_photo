@@ -1,4 +1,4 @@
-# ![logo](src/resources/icons/16x16/actions/image.ico) tri_photo (tp) 
+# ![logo](icons/16x16/tp.png) tri_photo (tp) 
 ![Static Badge](https://img.shields.io/badge/Rust-1.75.0-%2Cblue?style=plastic&logo=Rust)
 
 tri_photo est un programme écrit en rust, il utilise gtk4 pour son interface graphique.
@@ -119,5 +119,5 @@ Contactez-moi par email: [nicolasfilippozzi@gmail.com](mailto:nicolasfilippozzi@
 ## Licence
 
 Voir les fichiers :
-* [LICENSE-MIT](./LICENSE-MIT.md) du dépôt.
-* [LICENCE-APACHE](./LICENCE-APACHE.md) du dépôt.
+* [LICENSE-MIT](./LICENSE-MIT) du dépôt.
+* [LICENCE-APACHE](./LICENCE-APACHE) du dépôt.
