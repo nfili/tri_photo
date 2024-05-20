@@ -1,4 +1,4 @@
-# ![logo](icons/16x16/tp.png) tri_photo (tp) 
+# ![logo](icons/32x32/tp.png) tri_photo (tp) 
 ![Static Badge](https://img.shields.io/badge/Rust-1.75.0-%2Cblue?style=plastic&logo=Rust)
 
 tri_photo est un programme écrit en rust, il utilise gtk4 pour son interface graphique.
