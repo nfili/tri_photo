@@ -5,11 +5,13 @@ authors = ["Nicolas Filippozzi <nicolasfilippozzi@gmail.com>"]
 description = """
 tri_photo is a photo/image copy program, it can be installed on linux, mac or window.
 """
-categories = ["Multimedia"]
+categories = ["multimedia::images"]
 autotests = false
-license = "MIT,APACHE"
 edition = "2021"
 rust-version = "1.75"
+readme = "README.md"
+repository = "https://github.com/nfili/tri_photo"
+license = "MIT OR Apache-2.0"
 
 [[bin]]
 path="src/main.rs"
@@ -32,3 +34,6 @@ reverse_geocoder = "4.1.1"
 glib-build-tools = "0.18.0"
 
 
+[package.metadata.deb]
+maintainer = "Clyds <nicolasfilippozzi@gmail.com>"
+copyright = "2024, 2024 <nicolasfilippozzi@gmail.com>"

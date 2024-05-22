@@ -54,7 +54,26 @@ Pour le mement seul archlinux a été testé
         git clone https://github.com/nfili/tri_photo.git
         cd tri_photo
         cargo build --release 
-        Install -dm755 target/release/tp /path/of/your_choice
+        sudo ./install.sh
+```
+</details>
+
+### Désinstallation
+
+<details>
+    <summary><img src="https://github.com/archlinux/archwiki/blob/master/extensions/ArchLinux/modules/favicon.ico"> Archlinux</summary>
+
+```
+        sudo pacman -R tri_photo
+```
+</details>
+
+<details>
+    <summary><img src="image/linux.ico"> autre linux</summary>
+
+```
+        cd chemin/des/sources 
+        sudo ./uninstall.sh
 ```
 </details>
 
@@ -114,7 +133,7 @@ Contactez-moi par email: [nicolasfilippozzi@gmail.com](mailto:nicolasfilippozzi@
 
 ## Historique des versions
 * 1.0.0
-  * Premiére version
+  * Premiére version de test pre-release
 
 ## Licence
 
