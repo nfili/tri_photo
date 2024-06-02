@@ -2,3 +2,4 @@
 PKGBUILD
 .SRCINFO
 test.sh
+translate.sh
