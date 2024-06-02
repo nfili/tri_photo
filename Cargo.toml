@@ -29,11 +29,74 @@ conv = "0.3.2"
 regex = "1.10.2"
 chrono = "0.4.31"
 reverse_geocoder = "4.1.1"
+#cargo-generate-rpm = "0.14.0"
 
 [build-dependencies]
 glib-build-tools = "0.18.0"
 
+[profile.deb]
+inherits = "release"
+debug = false
 
 [package.metadata.deb]
 maintainer = "Clyds <nicolasfilippozzi@gmail.com>"
 copyright = "2024, 2024 <nicolasfilippozzi@gmail.com>"
+section = "utils"
+depends = "gtk4"
+assets = [
+	["target/release/tp", "usr/bin/", "755"],
+	["COPYRIGHT.md", "usr/share/doc/tri_photo/COPYRIGHT", "644"],
+	["LICENSE-MIT", "usr/share/doc/tri_photo/", "644"],
+	["LICENSE-APACHE", "usr/share/doc/tri_photo/", "644"],
+	["CHANGELOG.md", "usr/share/doc/tri_photo/CHANGELOG", "644"],
+	["README.md", "usr/share/doc/tri_photo/README", "644"],
+	["tp.desktop", "usr/share/applications/tp.desktop","644"],
+	["icons/8x8/tp.png","usr/share/icons/hicolor/8x8/apps","644"],
+	["icons/16x16/tp.png","usr/share/icons/hicolor/16x16/apps/tp.png","644"],
+	["icons/20x20/tp.png","usr/share/icons/hicolor/20x20/apps/tp.png","644"],
+	["icons/22x22/tp.png","usr/share/icons/hicolor/22x22/apps/tp.png","644"],
+	["icons/22x22/tp.png","usr/share/icons/hicolor/22x22/apps/tp.png","644"],
+	["icons/24x24/tp.png","usr/share/icons/hicolor/24x24/apps/tp.png","644"],
+	["icons/32x32/tp.png","usr/share/icons/hicolor/32x32/apps/tp.png","644"],
+	["icons/36x36/tp.png","usr/share/icons/hicolor/36x36/apps/tp.png","644"],
+	["icons/44x44/tp.png","usr/share/icons/hicolor/44x44/apps/tp.png","644"],
+	["icons/48x48/tp.png","usr/share/icons/hicolor/48x48/apps/tp.png","644"],
+	["icons/64x64/tp.png","usr/share/icons/hicolor/64x64/apps/tp.png","644"],
+	["icons/72x72/tp.png","usr/share/icons/hicolor/72x72/apps/tp.png","644"],
+	["icons/80x80/tp.png","usr/share/icons/hicolor/80x80/apps/tp.png","644"],
+	["icons/96x96/tp.png","usr/share/icons/hicolor/96x96/apps/tp.png","644"],
+	["icons/128x128/tp.png","usr/share/icons/hicolor/128x128/apps/tp.png","644"],
+	["icons/256x256/tp.png","usr/share/icons/hicolor/256x256/apps/tp.png","644"],
+	["icons/512x512/tp.png","usr/share/icons/hicolor/512x512/apps/tp.png","644"],
+]
+
+[package.metadata.generate-rpm]
+assets = [
+	{ source = "target/release/tp", dest = "/usr/bin/", mode = "755"},
+	{ source = "COPYRIGHT.md", dest = "/usr/share/doc/tri_photo/COPYRIGHT", mode = "644"},
+	{ source = "LICENSE-MIT", dest = "/usr/share/doc/tri_photo/", mode = "644"},
+	{ source = "LICENSE-APACHE", dest = "/usr/share/doc/tri_photo/", mode = "644"},
+	{ source = "CHANGELOG.md", dest = "/usr/share/doc/tri_photo/CHANGELOG", mode = "644"},
+	{ source = "README.md", dest = "/usr/share/doc/tri_photo/README", mode = "644"},
+	{ source = "tp.desktop", dest = "/usr/share/applications/tp.desktop", mode = "644"},
+	{ source = "icons/8x8/tp.png",dest = "/usr/share/icons/hicolor/8x8/apps", mode = "644"},
+	{ source = "icons/16x16/tp.png", dest = "/usr/share/icons/hicolor/16x16/apps/tp.png", mode = "644"},
+	{ source = "icons/20x20/tp.png", dest = "/usr/share/icons/hicolor/20x20/apps/tp.png", mode = "644"},
+	{ source = "icons/22x22/tp.png", dest = "/usr/share/icons/hicolor/22x22/apps/tp.png", mode = "644"},
+	{ source = "icons/22x22/tp.png", dest = "/usr/share/icons/hicolor/22x22/apps/tp.png", mode = "644"},
+	{ source = "icons/24x24/tp.png", dest = "/usr/share/icons/hicolor/24x24/apps/tp.png", mode = "644"},
+	{ source = "icons/32x32/tp.png", dest = "/usr/share/icons/hicolor/32x32/apps/tp.png", mode = "644"},
+	{ source = "icons/36x36/tp.png", dest = "/usr/share/icons/hicolor/36x36/apps/tp.png", mode = "644"},
+	{ source = "icons/44x44/tp.png", dest = "/usr/share/icons/hicolor/44x44/apps/tp.png", mode = "644"},
+	{ source = "icons/48x48/tp.png", dest = "/usr/share/icons/hicolor/48x48/apps/tp.png", mode = "644"},
+	{ source = "icons/64x64/tp.png", dest = "/usr/share/icons/hicolor/64x64/apps/tp.png", mode = "644"},
+	{ source = "icons/72x72/tp.png", dest = "/usr/share/icons/hicolor/72x72/apps/tp.png", mode = "644"},
+	{ source = "icons/80x80/tp.png", dest = "/usr/share/icons/hicolor/80x80/apps/tp.png", mode = "644"},
+	{ source = "icons/96x96/tp.png", dest = "/usr/share/icons/hicolor/96x96/apps/tp.png", mode = "644"},
+	{ source = "icons/128x128/tp.png", dest = "/usr/share/icons/hicolor/128x128/apps/tp.png", mode = "644"},
+	{ source = "icons/256x256/tp.png", dest = "/usr/share/icons/hicolor/256x256/apps/tp.png", mode = "644"},
+	{ source = "icons/512x512/tp.png", dest = "/usr/share/icons/hicolor/512x512/apps/tp.png", mode = "644"},
+]
+
+[package.metadata.generate-rpm.requires]
+gtk4 = ">= 4.14.1"
