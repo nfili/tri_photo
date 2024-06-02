@@ -63,9 +63,7 @@ fn base(title: &str)->Box{
 
 fn img() -> Image {
 		gtk::Image::builder()
-		// .icon_name("tp")
-		.file("/usr/share/icons/hicolor/32x32/apps/tp.png")
-    	// .resource("/org/gtk_rs/tri_photo/logo.png")
+		.icon_name("tp")
     	.margin_start(0)
     	.width_request(32)
     	.build()
@@ -83,6 +81,5 @@ fn quit()-> Image {
     	.width_request(8)
     	.build();
     	img.set_css_classes(&["btn_lab_hb","btn_lab_quit_hb"]);
-    	// img.set_icon_size(gtk::IconSize::__Unknown(16));
     	img
 }
