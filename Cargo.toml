@@ -1,6 +1,6 @@
 [package]
 name = "tri_photo"
-version = "0.1.0"  #:version
+version = "1.0.0"  #:version
 authors = ["Nicolas Filippozzi <nicolasfilippozzi@gmail.com>"]
 description = """
 tri_photo is a photo/image copy program, it can be installed on linux, mac or window.
@@ -29,6 +29,7 @@ conv = "0.3.2"
 regex = "1.10.2"
 chrono = "0.4.31"
 reverse_geocoder = "4.1.1"
+tr = "0.1.7"
 
 [build-dependencies]
 glib-build-tools = "0.18.0"
