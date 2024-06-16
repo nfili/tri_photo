@@ -1,0 +1,519 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR 2024 nicolas Filippozzi
+# This file is distributed under the same license as the tp package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: tp 1.0.0\n"
+"Report-Msgid-Bugs-To: nicolasfilippozzi@gmail.com\n"
+"POT-Creation-Date: 2024-06-16 11:21+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. commun
+#: src/text/mod.rs:189
+msgid "Load"
+msgstr ""
+
+#: src/text/mod.rs:190
+msgid "Next"
+msgstr ""
+
+#: src/text/mod.rs:191
+msgid "Exit"
+msgstr ""
+
+#: src/text/mod.rs:192
+msgid "Cancel"
+msgstr ""
+
+#: src/text/mod.rs:193
+msgid "Choose"
+msgstr ""
+
+#: src/text/mod.rs:194
+msgid "Validate"
+msgstr ""
+
+#: src/text/mod.rs:195
+msgid "Rename"
+msgstr ""
+
+#: src/text/mod.rs:196 src/text/mod.rs:258
+msgid "Save"
+msgstr ""
+
+#: src/text/mod.rs:197 src/text/mod.rs:219
+msgid "Copy"
+msgstr ""
+
+#: src/text/mod.rs:198
+msgid "waiting for data"
+msgstr ""
+
+#. mod app
+#: src/text/mod.rs:200
+msgid " : Home"
+msgstr ""
+
+#: src/text/mod.rs:201
+msgid " : Configuration"
+msgstr ""
+
+#: src/text/mod.rs:202
+msgid " : Load a file"
+msgstr ""
+
+#. mod gui
+#: src/text/mod.rs:204
+msgid "Where are your images located?"
+msgstr ""
+
+#: src/text/mod.rs:205
+msgid "Where do you want to copy them?"
+msgstr ""
+
+#: src/text/mod.rs:206
+msgid "Selecting the source directory"
+msgstr ""
+
+#: src/text/mod.rs:207
+msgid "Selecting the destination directory"
+msgstr ""
+
+#: src/text/mod.rs:208
+msgid "Only the photographs"
+msgstr ""
+
+#: src/text/mod.rs:209
+msgid "Day"
+msgstr ""
+
+#: src/text/mod.rs:210
+msgid "Month"
+msgstr ""
+
+#: src/text/mod.rs:211
+msgid "Year"
+msgstr ""
+
+#: src/text/mod.rs:212
+msgid "Places"
+msgstr ""
+
+#: src/text/mod.rs:213
+msgid "Remove sources"
+msgstr ""
+
+#: src/text/mod.rs:214
+msgid "Rename sources"
+msgstr ""
+
+#: src/text/mod.rs:215
+msgid "Choose as you go"
+msgstr ""
+
+#: src/text/mod.rs:216
+msgid "Month in letter"
+msgstr ""
+
+#: src/text/mod.rs:217
+msgid "Move"
+msgstr ""
+
+#: src/text/mod.rs:218
+msgid "Move and manage"
+msgstr ""
+
+#: src/text/mod.rs:220
+msgid "Manage"
+msgstr ""
+
+#: src/text/mod.rs:221
+msgid "files found: "
+msgstr ""
+
+#: src/text/mod.rs:222
+msgid "File to find"
+msgstr ""
+
+#: src/text/mod.rs:223
+msgid "Working directory"
+msgstr ""
+
+#: src/text/mod.rs:224
+msgid "Preview"
+msgstr ""
+
+#: src/text/mod.rs:225
+msgid "Sorting tree"
+msgstr ""
+
+#: src/text/mod.rs:226
+msgid "Treatment"
+msgstr ""
+
+#: src/text/mod.rs:227
+msgid "choose the file types to find."
+msgstr ""
+
+#: src/text/mod.rs:228
+msgid "Verified, please click the search icon."
+msgstr ""
+
+#: src/text/mod.rs:229
+msgid "Type of file to search: not chosen"
+msgstr ""
+
+#: src/text/mod.rs:230
+msgid "awaiting selection"
+msgstr ""
+
+#: src/text/mod.rs:231
+msgid "waiting for copy directory"
+msgstr ""
+
+#: src/text/mod.rs:232
+msgid "waiting for destination directory"
+msgstr ""
+
+#: src/text/mod.rs:233
+msgid "the destination must be different from the target"
+msgstr ""
+
+#: src/text/mod.rs:234
+msgid "choose your tree structure and your treatments."
+msgstr ""
+
+#: src/text/mod.rs:235
+msgid "Scan in progress, please wait..."
+msgstr ""
+
+#: src/text/mod.rs:236
+msgid "Search for files in directory"
+msgstr ""
+
+#: src/text/mod.rs:237
+msgid "Sorting program for photos"
+msgstr ""
+
+#. mod file
+#: src/text/mod.rs:239
+msgid "Error opening incorrect path"
+msgstr ""
+
+#: src/text/mod.rs:240
+msgid "still no data after creating new EXIF data"
+msgstr ""
+
+#: src/text/mod.rs:241
+msgid "Unable to create exif data"
+msgstr ""
+
+#: src/text/mod.rs:242
+msgid "Unable to delete source files"
+msgstr ""
+
+#: src/text/mod.rs:243
+msgid "Problem while copying"
+msgstr ""
+
+#: src/text/mod.rs:244
+msgid "January"
+msgstr ""
+
+#: src/text/mod.rs:245
+msgid "February"
+msgstr ""
+
+#: src/text/mod.rs:246
+msgid "March"
+msgstr ""
+
+#: src/text/mod.rs:247
+msgid "April"
+msgstr ""
+
+#: src/text/mod.rs:248
+msgid "May"
+msgstr ""
+
+#: src/text/mod.rs:249
+msgid "June"
+msgstr ""
+
+#: src/text/mod.rs:250
+msgid "July"
+msgstr ""
+
+#: src/text/mod.rs:251
+msgid "August"
+msgstr ""
+
+#: src/text/mod.rs:252
+msgid "September"
+msgstr ""
+
+#: src/text/mod.rs:253
+msgid "October"
+msgstr ""
+
+#: src/text/mod.rs:254
+msgid "Nomenver"
+msgstr ""
+
+#: src/text/mod.rs:255
+msgid "December"
+msgstr ""
+
+#. mod file_choser
+#: src/text/mod.rs:257
+msgid "Save progress"
+msgstr ""
+
+#. mod gest_file
+#: src/text/mod.rs:260
+msgid "not_photo"
+msgstr ""
+
+#. mod help_gui
+#: src/text/mod.rs:262
+msgid "help of TriPhoto"
+msgstr ""
+
+#: src/text/mod.rs:263
+msgid "Welcome to the program help"
+msgstr ""
+
+#: src/text/mod.rs:264
+msgid "This section allows you to choose the directories used by the program to work."
+msgstr ""
+
+#: src/text/mod.rs:265
+msgid "Source"
+msgstr ""
+
+#: src/text/mod.rs:266
+msgid "Directory containing the photos to copy."
+msgstr ""
+
+#: src/text/mod.rs:267
+msgid "Destination"
+msgstr ""
+
+#: src/text/mod.rs:268
+msgid "Directory where the photos will be copied."
+msgstr ""
+
+#: src/text/mod.rs:269
+msgid "Indicates the number of files found,"
+msgstr ""
+
+#: src/text/mod.rs:270
+msgid "the size of files to copy and"
+msgstr ""
+
+#: src/text/mod.rs:271
+msgid "the size of the destination directory"
+msgstr ""
+
+#: src/text/mod.rs:272
+msgid "Information"
+msgstr ""
+
+#: src/text/mod.rs:273
+msgid "Indicates the status of the program."
+msgstr ""
+
+#: src/text/mod.rs:274
+msgid "File at found"
+msgstr ""
+
+#: src/text/mod.rs:275
+msgid "This section allows you to select the type of image file to search for."
+msgstr ""
+
+#: src/text/mod.rs:276
+msgid "This section allows you to select the desired tree structure for sorting photos,\n"
+"if the file is not a photo, a \"not_photo\" directory will be created."
+msgstr ""
+
+#: src/text/mod.rs:278
+msgid "Creates a directory based on the year the photo was taken."
+msgstr ""
+
+#: src/text/mod.rs:279
+msgid "Creates a directory based on the month the photo was taken."
+msgstr ""
+
+#: src/text/mod.rs:280
+msgid "Creates a directory based on the day the photo was taken."
+msgstr ""
+
+#: src/text/mod.rs:281
+msgid "Creates a directory based on the shooting location."
+msgstr ""
+
+#: src/text/mod.rs:282
+msgid "Creates the directories of the month in letter."
+msgstr ""
+
+#: src/text/mod.rs:283
+msgid "This section allows you to select the actions to be carried out after the end of the sorting."
+msgstr ""
+
+#: src/text/mod.rs:284
+msgid "Allows you to rename sorted files."
+msgstr ""
+
+#: src/text/mod.rs:285
+msgid "Allows you to delete sources."
+msgstr ""
+
+#: src/text/mod.rs:286
+msgid "Allows you to select the action"
+msgstr ""
+
+#: src/text/mod.rs:287
+msgid "to perform in real time."
+msgstr ""
+
+#. mod rename
+#: src/text/mod.rs:289
+msgid "New name"
+msgstr ""
+
+#: src/text/mod.rs:290
+msgid "Keep"
+msgstr ""
+
+#. mod popup_accueil
+#: src/text/mod.rs:292
+msgid "Welcome,\n"
+"\n"
+"You will be able to sort your \"Photos\", according to their shooting dates and their geolocations (if available when shooting).\n"
+"\n"
+"You can also choose to rename the photographs, as well as delete the contents of the source directory.\n"
+"            "
+msgstr ""
+
+#. mod working
+#: src/text/mod.rs:299
+msgid "Copying, please wait..."
+msgstr ""
+
+#. Text::WorkingProgressStatusWait => todo!(),
+#: src/text/mod.rs:301
+msgid "None"
+msgstr ""
+
+#: src/text/mod.rs:302
+msgid "Path"
+msgstr ""
+
+#: src/text/mod.rs:303
+msgid "Date"
+msgstr ""
+
+#: src/text/mod.rs:304
+msgid "Location"
+msgstr ""
+
+#: src/text/mod.rs:305
+msgid "Status"
+msgstr ""
+
+#: src/text/mod.rs:306
+msgid "Save and Quit"
+msgstr ""
+
+#: src/text/mod.rs:307
+msgid "Exit the program"
+msgstr ""
+
+#: src/text/mod.rs:308
+msgid "You are going to leave the program,\n"
+" the listing of files to copy/rename will be lost,\n"
+" I advise you to save to exit."
+msgstr ""
+
+#: src/text/mod.rs:311
+msgid "Critical Warning"
+msgstr ""
+
+#: src/text/mod.rs:312
+msgid "You have chosen to delete\n"
+" old files this action is irreversible,\n"
+" Deleted files will not be recoverable."
+msgstr ""
+
+#: src/text/mod.rs:315
+msgid "I understand"
+msgstr ""
+
+#: src/text/mod.rs:316
+msgid " : Choice for files"
+msgstr ""
+
+#: src/text/mod.rs:317
+msgid "You have chosen to manage files as you go"
+msgstr ""
+
+#: src/text/mod.rs:318
+msgid " : Copy finished"
+msgstr ""
+
+#: src/text/mod.rs:319
+msgid "File copying is complete"
+msgstr ""
+
+#: src/text/mod.rs:320
+msgid "Rename file"
+msgstr ""
+
+#: src/text/mod.rs:321
+msgid "Initialization"
+msgstr ""
+
+#: src/text/mod.rs:322
+msgid "Delete"
+msgstr ""
+
+#: src/text/mod.rs:323
+msgid "Personalized management in progress..."
+msgstr ""
+
+#: src/text/mod.rs:324
+msgid "Deletion in progress..."
+msgstr ""
+
+#: src/text/mod.rs:325
+msgid "Renaming in progress..."
+msgstr ""
+
+#: src/text/mod.rs:326
+msgid "Copying in progress..."
+msgstr ""
+
+#: src/text/mod.rs:327
+msgid "Copied"
+msgstr ""
+
+#: src/text/mod.rs:328
+msgid "Choice made"
+msgstr ""
+
+#: src/text/mod.rs:329
+msgid "Renamed"
+msgstr ""
+
+#: src/text/mod.rs:330
+msgid "Unknown"
+msgstr ""
