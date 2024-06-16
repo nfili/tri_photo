@@ -39,7 +39,7 @@ impl ObjectSubclass for PopupAccueil {
 impl ObjectImpl for PopupAccueil {
     fn constructed(&self) {
         self.parent_constructed();
-        self.obj().init_hb();
+        // self.obj().init_hb();
         self.obj().init_label();
         self.obj().set_icon_button();
     }
