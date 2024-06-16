@@ -1,5 +1,6 @@
 mod gif_paintable;
 mod help_gui;
+
 use std::{
 	borrow::BorrowMut, cell::RefCell, collections::HashMap, path::Path, rc::Rc, sync::{Arc, Mutex}, thread::{self, sleep}, time::Duration
 };
@@ -15,6 +16,7 @@ use crate::{
 	file_choser::new_select, gest_files::GestFiles, header_bar, gui::help_gui::HelpGui, text::Text
 };
 
+// This mod is not mine, mod example from gtk-rs
 use self::gif_paintable::GifPaintable;
 
 /// Représente l'utilisation du selecteur de répertoire
