@@ -7,10 +7,10 @@ use std::{
 };
 
 use crate::{
-	app::App,
+	app::human_read,
 	directory::is_dir,
 	file::File,
-	geo
+	geo, text::Text
 };
 
 #[derive(Debug,Clone,Default)]
@@ -88,7 +88,6 @@ pub fn init<F>(&mut self, path: &Path,option: &Vec<String>, mut callback: F)
 		        };
     			if gard{
 		        	let _ = data.send(vec!["stop".to_string()]).unwrap();
-					println!("Arret en cours {gard}");
 					break;
 		        }
 				if let Ok(entry) = entry {
@@ -135,7 +134,7 @@ pub fn init<F>(&mut self, path: &Path,option: &Vec<String>, mut callback: F)
 		            							self.nb_file += 1;
 		            							self.size += metadata.len();
 		            						}
-		            						let size = App::human_read(self.size);
+		            						let size = human_read(self.size);
 		            						data.send(vec![self.nb_file().to_string(),size]).unwrap();
 		            					}
 	            						Err(_e) => (),
@@ -169,7 +168,7 @@ pub fn init<F>(&mut self, path: &Path,option: &Vec<String>, mut callback: F)
 		self.set_current(file.id_number().try_into().unwrap());
 		let path:String= match file.is_photo(){
             true => file.create_path_dir(path_dest.clone(),option),
-            false => file.create_path_dir(path_dest.clone()+"/not_photo",option),
+            false => file.create_path_dir(path_dest.clone()+&Text::GestFilesNotPhoto.as_string(),option),
         };
         
         match create_dir(path.to_string()){

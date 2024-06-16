@@ -1,8 +1,9 @@
 use gtk::{prelude::{DialogExtManual, IsA, WidgetExt}, traits::FileChooserExt, FileChooserAction, FileChooserDialog, ResponseType, Window};
+use crate::text::Text;
 
-pub fn new_load(parent: Option <&impl IsA<Window>>) -> FileChooserDialog{
-  let chooser = base(parent.unwrap(), "Charger le fichier", FileChooserAction::Open, 
-    &[("Charger", ResponseType::Ok), ("Annuler", ResponseType::Cancel)]);
+pub fn new_load(parent: Option <&impl IsA<Window>>,title:&str) -> FileChooserDialog{
+  let chooser = base(parent.unwrap(), title, FileChooserAction::Open, 
+    &[(&Text::Load.as_string(), ResponseType::Ok), (&Text::Cancel.as_string(), ResponseType::Cancel)]);
   let file_filter: gtk::FileFilter = gtk::FileFilter::new();
   file_filter.add_pattern("*.tps");
   chooser.set_filter(&file_filter);
@@ -10,8 +11,8 @@ pub fn new_load(parent: Option <&impl IsA<Window>>) -> FileChooserDialog{
   chooser
 }
 pub fn new_save(parent: Option <&impl IsA<Window>>) -> FileChooserDialog {
-  let chooser = base(parent.unwrap(), "Sauvegarder la progression", FileChooserAction::Save,
-   &[("Annuler",ResponseType::Cancel),("Sauvegarder",ResponseType::Ok)]);
+  let chooser = base(parent.unwrap(), &Text::FileChoserSaveProgress.as_string(), FileChooserAction::Save,
+   &[(&Text::Cancel.as_string(),ResponseType::Cancel),(&Text::FileChoserSave.as_string(),ResponseType::Ok)]);
   chooser.set_widget_name("dialog");
   chooser
 

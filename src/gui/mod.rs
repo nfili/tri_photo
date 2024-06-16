@@ -1,4 +1,5 @@
 mod gif_paintable;
+mod help_gui;
 use std::{
 	borrow::BorrowMut, cell::RefCell, collections::HashMap, path::Path, rc::Rc, sync::{Arc, Mutex}, thread::{self, sleep}, time::Duration
 };
@@ -9,84 +10,9 @@ use gtk::{
 		BoxExt, ButtonExt, CheckButtonExt, DialogExtManual, EditableExt, FileChooserExt, GridExt, GtkWindowExt, WidgetExt
 	}, Align, Button, CheckButton, Entry, Frame, Grid, IconSize, Image, Label, Orientation, Picture, Widget, Window
 };
-use crate::{header_bar, app::{App,VERSION, WIDTH, HEIGHT, Cmd}, help_gui::HelpGui, gest_files::GestFiles, file_choser::new_select};
+use crate::{app::{human_read, is_valid_taille, Cmd, HEIGHT, VERSION, WIDTH}, file_choser::new_select, gest_files::GestFiles, header_bar, gui::help_gui::HelpGui, text::Text};
 
 use self::gif_paintable::GifPaintable;
-
-/// texte de gtkentry pour la séléction des sources dans la section répertoire de travail
-const ENTRY_SOURCE: &str = "Où se trouve vos images?";
-/// texte de gtkentry pour la séléction de la destinations dans la section répertoire de travail
-const ENTRY_DESTINATION : &str = "Où voulez vous les copier?";
-/// texte de tooltip pour l'icone de rep_source
-const TOOLTIP_SOURCE: &str = "Sélection du répertoire source";
-/// texte de tooltip pour l'icone de rep_destination
-const TOOLTIP_DESTINATION: &str = "Sélection du répertoire de destination";
-/// texte de gtkcheckbutton pour only_photo dans la section fichier à trouver
-const ONLY_PHOTO: &str = "Seulement les photographies";
-/// texte de gtkcheckbutton pour day dans la section arborescence du tri
-const DAY: &str = "Jours";
-/// texte de gtkcheckbutton pour month dans la section arborescence du tri
-const MONTH: &str = "Mois";
-/// texte de gtkcheckbutton pour year dans la section arborescence du tri
-const YEAR: &str = "Année";
-/// texte de gtkcheckbutton pour lieu dans la section arborescence du tri
-const LIEU: &str  = "Lieux";
-/// texte de gtkcheckbutton pour delete dans la section traitement
-const DELETE: &str = "Supprimer les sources";
-/// texte de gtkcheckbutton pour rename dans la section traitement
-const RENAME: &str = "Renomer les fichiers";
-/// texte de gtkcheckbutton pour choose_on_demand dans la section traitement
-const CHOOSE_ON_DEMAND: &str = "Choisir au fur et à mesure";
-/// texte de gtkcheckbutton pour letter dans la section arborescence du tri
-const LETTER: &str = "Mois en lettre";
-/// texte de gtkbutton pour run
-const DEMARRER_MOVE: &str = "Déplacer";
-/// texte de gtkbutton pour run
-const DEMARRER_MOVE_GESTION: &str = "Déplacer et gérer";
-/// texte de gtkbutton pour run
-const DEMARRER_COPY: &str = "Copier";
-/// texte de gtkbutton pour run
-const DEMARRER_GESTION: &str = "Gérer";
-/// texte de gtkbutton pour quitter
-const QUITTER: &str = "Quitter";
-/// texte de gtklabel pour les fichiers trouvés de la section répertoire de travail
-const FILE_FOUND: &str = "fichiers trouvés: ";
-/// texte de gtkframe pour le titre de la section fichier à trouver
-const FILE_AT_FOUND: &str = "Fichier à trouver";
-/// texte de gtkframe pour le titre de la section répertoire de travail
-const WORK_DIR: &str = "Répertoire de travail";
-/// texte de gtklabel pour aperçu dans la section arborescence du tri
-const VIEW: &str = "Aperçu";
-/// texte de gtkframe pour le titre de la section arborescence du tri
-const SORTING_TREE: &str = "Aborescence du tri";
-/// texte de gtkframe pour le titre de la section traitement
-const TREATMENT: & str = "Traitement";
-/// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
-const DATA_WAIT: &str = "en attente de données";
-/// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
-const DIR_VALID:& str = "choisissez les types de fichiers à trouver.";
-/// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
-const FILE_TYPE_OK: &str = "verifié, veuillez cliquer sur l'icone de recherche.";
-/// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
-const FILE_TYPE_NONE: &str =  "Type de fichier à chercher:  non choisie";
-/// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
-const SEL_WAIT: &str = "en attente de sélection";
-/// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
-const ERROR_DEST: &str = "en attente du repertoire de copie";
-/// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
-const ERROR_DEST_BIS: &str = "la destination doit être différente de la cible ";
-/// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
-const ERROR_SEL: &str = "sélection identique";
-/// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
-const READY_COPY: &str = "choisissez votre arborescence et le traitement.";
-/// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
-const SCANNING_PROGRESS: &str = "Scan en cours, veuillez patienter ...";
-/// texte de gtkbutton pour chercher dans la section fichier à trouver
-const  CHERCHER: &str = "Cherche les fichiers dans le répertoire";
-/// texte de gtkbutton pour annuler dans la filechooser
-const CANCEL: &str = "Annuler";
-/// texte de gtkbutton pour choisir dans la filechooser
-const CHOICE: &str = "Choisir";
 
 /// Représente l'utilisation du selecteur de répertoire
  #[derive(PartialEq,Clone,Debug)]
@@ -374,7 +300,7 @@ impl GuiWindow{
 		// Initialisation des variables
 		let mut gui =Self::init_values(app, title, parent);
 		// Création de l'interface
-		gui.create_hb();
+		gui.create_hb(title);
 		// Conteneur principale
 		let v_box_top_level = Self::create_box(Orientation::Vertical, Align::Baseline, 18, 24, 24, 18, 18);
 		v_box_top_level.append(&gui.create_space_work());
@@ -414,21 +340,21 @@ impl GuiWindow{
             .icon_name("tp")
             .build();
         let mut rsc = Rsc::new();
-		let source = Self::create_entry(ENTRY_SOURCE);
-		let dest = Self::create_entry(ENTRY_DESTINATION);
+		let source = Self::create_entry(&Text::GuiEntrySource.as_string());
+		let dest = Self::create_entry(&Text::GuiEntryDestination.as_string());
 		let btn_source = Self::create_btn_sel(rsc.mod_path("rep_chooser.png").unwrap());
 		let btn_dest = Self::create_btn_sel(rsc.mod_path("rep_chooser.png").unwrap());
-		let annuler = Self::create_btn(QUITTER, rsc.mod_path("quit.png").unwrap(), "btn", true);
+		let annuler = Self::create_btn(&Text::Quitter.as_string(), rsc.mod_path("quit.png").unwrap(), "btn", true);
 		annuler.child().unwrap().last_child().unwrap().set_size_request(32,32);
 		annuler.set_margin_end(12);
-		let valider = Self::create_btn(DEMARRER_COPY, rsc.mod_path("copier.png").unwrap(), "btn", false);
+		let valider = Self::create_btn(&Text::GuiDemarrerCopy.as_string(), rsc.mod_path("copier.png").unwrap(), "btn", false);
 		valider.child().unwrap().last_child().unwrap().set_size_request(32,32);
 		let nb_file = Label::builder().label("0").margin_end(0).build();
 		let tt_file = Label::builder().label("0").build();
 		let tt_dur = Label::builder().label("/0GiB").build();
 		let info = Label::builder()
 			.width_request(310)
-			.label(SEL_WAIT)
+			.label(&Text::GuiSelWait.as_string())
 			.css_classes(["infos"])
 			.build();
 		let img_info = Picture::builder()
@@ -441,26 +367,26 @@ impl GuiWindow{
 		let gif = Self::create_checkbutton("gif");
 		let bmp = Self::create_checkbutton("bmp");
 		let tiff = Self::create_checkbutton("tiff");
-		let only_photo = Self::create_checkbutton(ONLY_PHOTO);
+		let only_photo = Self::create_checkbutton(&Text::GuiOnlyPhoto.as_string());
 		only_photo.set_halign(gtk::Align::Center);
 		only_photo.set_width_request(150);
 		let search = Self::create_btn_sel(rsc.mod_path("icone_search.png").unwrap());
-		search.set_tooltip_text(Some(CHERCHER));
+		search.set_tooltip_text(Some(&Text::GuiChercher.as_string()));
 		search.hide();
 		search.set_halign(gtk::Align::Center);
 		search.set_cursor_from_name(Some("pointer"));
-		let year = Self::create_checkbutton(YEAR);
-		let month = Self::create_checkbutton(MONTH);
-		let day = Self::create_checkbutton(DAY);
-		let geo_loc = Self::create_checkbutton(LIEU);
-		let letter = Self::create_checkbutton(LETTER);
+		let year = Self::create_checkbutton(&Text::GuiYear.as_string());
+		let month = Self::create_checkbutton(&Text::GuiMonth.as_string());
+		let day = Self::create_checkbutton(&Text::GuiDay.as_string());
+		let geo_loc = Self::create_checkbutton(&Text::GuiLieu.as_string());
+		let letter = Self::create_checkbutton(&Text::GuiLetter.as_string());
 		letter.set_halign(gtk::Align::Center);
 		letter.set_hexpand(false);
 		letter.set_margin_bottom(8);
 
-		let rename = Self::create_checkbutton(RENAME);
-		let delete = Self::create_checkbutton(DELETE);
-		let choose_on_demand = Self::create_checkbutton(CHOOSE_ON_DEMAND);
+		let rename = Self::create_checkbutton(&Text::GuiRename.as_string());
+		let delete = Self::create_checkbutton(&Text::GuiDelete.as_string());
+		let choose_on_demand = Self::create_checkbutton(&Text::GuiChooseOnDemand.as_string());
 		let apercu = Image::builder()
 		.resource(rsc.mod_path("apercu_none.png").unwrap())
 		.height_request(100)
@@ -507,7 +433,7 @@ impl GuiWindow{
 	/*-------------------------------CREATION DE LA VUE DE L'INTERFACE-------------------------------*/
 	/*-----------------------------------------------------------------------------------------------*/
 	/// Création de la header bar
-	fn create_hb(&self){
+	fn create_hb(&self,title:&str){
 		fn create_btn_hb(res: &str) -> Button{
 			let img = Image::builder()
 		  	.resource(res)
@@ -542,7 +468,7 @@ impl GuiWindow{
             about.set_version(Some(VERSION));
             about.set_program_name(Some("TriPhoto"));
             about.set_license_type(gtk::License::MitX11);
-            about.set_comments(Some("Programme de tri pour les photos"));
+            about.set_comments(Some(&Text::GuiAboutShortDescription.as_string()));
             about.set_copyright(Some("© 2023 Nicolas Filippozzi"));
             about.set_artists(&["Nicolas Filippozzi","https://thenounproject.com/browse/icons/term/like/ Ilham Fitrotul Hayat"]);
             about.set_authors(&[ "Nicolas Filippozzi"]);
@@ -552,7 +478,7 @@ impl GuiWindow{
             about.show();
             obj.set_cursor_from_name(Some("pointer"));
         });
-        self.window.set_titlebar(Some(&header_bar::new_with_widget_at_end("Tri Photo : Configuration"
+        self.window.set_titlebar(Some(&header_bar::new_with_widget_at_end(title
             ,vec![&hb_about,&hb_help],{
             let this:GuiWindow = self.clone();
             move || { this.quit() }
@@ -697,7 +623,7 @@ impl GuiWindow{
 
   		let h_box0 = Self::create_box(gtk::Orientation::Horizontal, gtk::Align::Center, 0, 10, 0, 12, 12);
 		let lab_nb_file = Label::builder()
-			.label(FILE_FOUND)
+			.label(&Text::GuiFileFound.as_string())
 			.margin_start(0)
 			.build();
 		h_box0.append(&lab_nb_file);
@@ -718,7 +644,7 @@ impl GuiWindow{
 		conteneur0.append(&grid);
 		conteneur0.append(&h_box0);
 		conteneur0.append(&h_box2);
-		let frame = Self::create_frame(WORK_DIR,&conteneur0);
+		let frame = Self::create_frame(&Text::GuiWorkDir.as_string(),&conteneur0);
 		frame
   	}
   	/// # -> Retourne dans un gtkFrame la section Fichier à trouver
@@ -739,7 +665,7 @@ impl GuiWindow{
 
   		let conteneur0 = Self::create_conteneur0(&self);
 		conteneur0.append(&h_box0);
-		let frame = Self::create_frame(FILE_AT_FOUND,&conteneur0);
+		let frame = Self::create_frame(&Text::GuiFileAtFound.as_string(),&conteneur0);
 		frame
   	}
   	/// # -> Retourne dans un gtkFrame la section Arborescense de tri
@@ -756,7 +682,7 @@ impl GuiWindow{
 		h_box1.append(&self.day);
 		h_box1.append(&self.geo_loc);
 
-		let lab_apercu = Label::new(Some(VIEW));
+		let lab_apercu = Label::new(Some(&Text::GuiView.as_string()));
 		h_box2.append(&lab_apercu);
 		h_box2.append(&self.apercu);
 
@@ -766,7 +692,7 @@ impl GuiWindow{
 		let conteneur0 = Self::create_conteneur0(&self);
 		conteneur0.append(&h_box0);
 		conteneur0.append(&self.letter);
-		let frame = Self::create_frame(SORTING_TREE,&conteneur0);
+		let frame = Self::create_frame(&Text::GuiSortingTree.as_string(),&conteneur0);
 		frame 
   	}
   	/// # -> Retourne dans un gtkFrame la section Option d'aprés tri
@@ -786,7 +712,7 @@ impl GuiWindow{
 
   		let conteneur0 = Self::create_conteneur0(&self);
 		conteneur0.append(&v_box0);
-		let frame = Self::create_frame(TREATMENT,&conteneur0);
+		let frame = Self::create_frame(&Text::GuiTraitement.as_string(),&conteneur0);
 		frame 
   	}
   	/// # -> Retourne dans un gtkBox les boutons d'action de l'interface( Quitter/Valider )
@@ -848,33 +774,33 @@ impl GuiWindow{
         fn init_entry(gui: &mut GuiWindow,entry_dir: EntryDir){
             let btn: gtk::Button;
             let src: gtk::Entry;
-            let title: &str;
-            let tooltip: &str;
+            let title: String;
+            let tooltip: String;
             match entry_dir{
                 EntryDir::Source => {
                     src= gui.source.clone();
                     btn= gui.btn_source.clone();
-                    title= ENTRY_SOURCE;
-                    tooltip= TOOLTIP_SOURCE;
+                    title= Text::GuiEntrySource.as_string();
+                    tooltip= Text::GuiTooltipSource.as_string();
                 },
                 EntryDir::Destination => {
                     src = gui.dest.clone();
                     btn = gui.btn_dest.clone();
-                    title = ENTRY_DESTINATION;
-                    tooltip = TOOLTIP_DESTINATION;
+                    title = Text::GuiEntryDestination.as_string();
+                    tooltip = Text::GuiTooltipDestination.as_string();
                 }
             };
-            src.set_text(title);
+            src.set_text(&title.clone());
             src.set_halign(Align::Fill);
             btn.set_cursor_from_name(Some("pointer"));
-            let rep = new_select(Some(&gui.window),title,CHOICE,CANCEL);
-            btn.set_tooltip_text(Some(tooltip));
+            let rep = new_select(Some(&gui.window),&title,&Text::Choice.as_string(),&Text::Cancel.as_string());
+            btn.set_tooltip_text(Some(&tooltip));
             btn.connect_clicked({ 
             	let this = gui.clone();
             	let src = src.clone();
             	let rep = rep.clone();
+                let title = title.clone();
             	  move |obj| {
-            	
             	this.valider.set_sensitive(false);
             	this.nb_file.set_label("0");
             	this.tt_file.set_label("0");
@@ -888,7 +814,7 @@ impl GuiWindow{
                 	let mut this = this.clone();
                 	let src = src.clone();
                 	let entry = entry_dir.clone();
-
+                    let title = title.clone();
                 	move |objs,answer| {
 	                    objs.hide();
 	                    while !this.gww.files.try_borrow_mut().is_ok(){
@@ -902,31 +828,31 @@ impl GuiWindow{
 	                            src.set_text(&path);
 	                            if entry == EntryDir::Destination{
 	                            	let taille="/".to_owned()+  
-               						 &App::human_read(fs2::available_space(Path::new(path)).unwrap_or_default());
+               						 &human_read(fs2::available_space(Path::new(path)).unwrap_or_default());
 	                        		this.tt_dur.set_label(taille.as_str());
 	                        	}
 	                        	}
 	                        } 
 	                        _ => {
-	                        	src.set_text(title);
-	                        	set_all_widgets_on_echec(&mut this,DATA_WAIT,StateInfo::None);
+	                        	src.set_text(&title.clone());
+	                        	set_all_widgets_on_echec(&mut this,&Text::DataWait.as_string(),StateInfo::None);
 	                        }
 	                    }
 	                    match GuiWindow::verif_dir_status( this.source.clone(), this.dest.clone()) {
 	                        Ok(b) => {
 	                        	match b{
 	                        		true => {
-	                        			this.info.set_label(DIR_VALID);
+	                        			this.info.set_label(&Text::GuiDirValid.as_string());
 	                            		this.gww.set_state_check_button(true,&mut this.search());
 	                            		this.set_info(StateInfo::Valide);	                            		
 	                        		}
                             		false => {
-                            			set_all_widgets_on_echec(&mut this,DATA_WAIT,StateInfo::Invalide);
+                            			set_all_widgets_on_echec(&mut this,&Text::DataWait.as_string(),StateInfo::Invalide);
                             		},
 	                        	}
 	                        },
 	                        Err(e) => {
-	                        	set_all_widgets_on_echec(&mut this,e,StateInfo::Invalide);
+	                        	set_all_widgets_on_echec(&mut this,e.as_str(),StateInfo::Invalide);
 	                        },
 	                    }
                 }});
@@ -1158,13 +1084,13 @@ impl GuiWindow{
   		fn activate_btn_search(gui: &GuiWindow, b: bool){
   			gui.search.set_sensitive(b);
   			if b{
-  				gui.info.set_label(FILE_TYPE_OK);
+  				gui.info.set_label(&Text::GuiFileTypeOk.as_string());
   				gui.set_info(StateInfo::Valide);
   				gui.search.show();
   				gui.search.child().unwrap().set_properties(&[("resource",&"/org/gtk_rs/tri_photo/icone_search.png")]);
   			}
   			else {
-  				gui.info.set_label(FILE_TYPE_NONE);
+  				gui.info.set_label(&Text::GuiFileTypeNone.as_string());
   				gui.set_info(StateInfo::Invalide);
   				gui.search.hide();
   			}
@@ -1295,21 +1221,25 @@ impl GuiWindow{
   				move |x|{
   					if x.is_active(){
   						if this.choose_on_demand.is_active(){
-  							this.valider.child().unwrap().first_child().unwrap().set_properties(&[("label",&DEMARRER_MOVE_GESTION)]);
+  							this.valider.child().unwrap().first_child().unwrap()
+                            .set_properties(&[("label",&Text::GuiDemarrerMoveGestion.as_string())]);
   							set_img_btn(&this,"gestion_deplacer.png");
   						}
   						else {
-  							this.valider.child().unwrap().first_child().unwrap().set_properties(&[("label",&DEMARRER_MOVE)]);
+  							this.valider.child().unwrap().first_child().unwrap()
+                            .set_properties(&[("label",&Text::GuiDemarrerMove.as_string())]);
   							set_img_btn(&this,"deplacer.png");
   						}
   					}
   					else {
   						if this.choose_on_demand.is_active(){
-  							this.valider.child().unwrap().first_child().unwrap().set_properties(&[("label",&DEMARRER_GESTION)]);
+  							this.valider.child().unwrap().first_child().unwrap()
+                            .set_properties(&[("label",&Text::GuiDemarrerGestion.as_string())]);
   							set_img_btn(&this,"gestion.png");
   						}
   						else {
-  							this.valider.child().unwrap().first_child().unwrap().set_properties(&[("label",&DEMARRER_COPY)]);
+  							this.valider.child().unwrap().first_child().unwrap()
+                            .set_properties(&[("label",&Text::GuiDemarrerCopy.as_string())]);
   							set_img_btn(&this,"copier.png");
   						}
   					}
@@ -1320,11 +1250,13 @@ impl GuiWindow{
   				move |x| {
 					if x.is_active(){
 						if this.delete.is_active(){
-  							this.valider.child().unwrap().first_child().unwrap().set_properties(&[("label",&DEMARRER_MOVE_GESTION)]);
+  							this.valider.child().unwrap().first_child().unwrap()
+                            .set_properties(&[("label",&Text::GuiDemarrerMoveGestion.as_string())]);
   							set_img_btn(&this,"gestion_deplacer.png");
   						}
   						else {
-  							this.valider.child().unwrap().first_child().unwrap().set_properties(&[("label",&DEMARRER_GESTION)]);
+  							this.valider.child().unwrap().first_child().unwrap()
+                            .set_properties(&[("label",&Text::GuiDemarrerGestion.as_string())]);
   							set_img_btn(&this,"gestion.png");
   						}
   						this.rename.set_active(false);
@@ -1332,11 +1264,13 @@ impl GuiWindow{
   					}
   					else {
   						if this.delete.is_active(){
-  							this.valider.child().unwrap().first_child().unwrap().set_properties(&[("label",&DEMARRER_MOVE)]);
+  							this.valider.child().unwrap().first_child().unwrap()
+                            .set_properties(&[("label",&Text::GuiDemarrerMove.as_string())]);
   							set_img_btn(&this,"deplacer.png");
   						}
   						else {
-  							this.valider.child().unwrap().first_child().unwrap().set_properties(&[("label",&DEMARRER_COPY)]);
+  							this.valider.child().unwrap().first_child().unwrap()
+                            .set_properties(&[("label",&Text::GuiDemarrerCopy.as_string())]);
   							set_img_btn(&this,"copier.png");
   						}
   						this.rename.set_sensitive(true);
@@ -1357,24 +1291,24 @@ impl GuiWindow{
      *
      # -> Renvoi true si aucune erreur, sinon false
     */
-	pub fn verif_dir_status(src: Entry,dst: Entry)-> Result <bool, &'static str> {
-        if src.text().as_str() != ENTRY_SOURCE{
-            if dst.text().as_str() != ENTRY_DESTINATION{
+	pub fn verif_dir_status(src: Entry,dst: Entry)-> Result <bool, String> {
+        if src.text().as_str() != Text::GuiEntrySource.as_string(){
+            if dst.text().as_str() != Text::GuiEntryDestination.as_string(){
                 if src.text().as_str() != dst.text().as_str(){
                 	if dst.text().contains(src.text().as_str()){
-                		return Err(ERROR_DEST_BIS);
+                		return Err(Text::GuiErrorDestBis.as_string());
                 	}
                     return Ok(true);
                 }
                 else{
-                    return Err(ERROR_SEL);
+                    return Err(Text::GuiErrorSel.as_string());
                 }
             }
             else{
-                return Err(ERROR_DEST);
+                return Err(Text::GuiErrorDest.as_string());
             }
         }
-        Err(SEL_WAIT)
+        Err(Text::GuiSelWait.as_string())
     }
 	/**
      Fonction permettant de gérer la fonction de recherche et de copie
@@ -1401,11 +1335,11 @@ impl GuiWindow{
 		                    (Arc::new(Mutex::new(false)),tx.clone())//Temporaire
 		                }});               
                 let taille="/".to_owned()+  
-                &App::human_read(fs2::available_space(Path::new(dst.text().as_str())).unwrap_or_default());
+                &human_read(fs2::available_space(Path::new(dst.text().as_str())).unwrap_or_default());
                 gui.tt_dur.set_label(&taille);
                
 
-                if App::is_valid_taille(dst.text().as_str(), search.size()){
+                if is_valid_taille(dst.text().as_str(), search.size()){
                     gui.set_info(StateInfo::Valide);
                     v.set_sensitive(true);
                     gui.search.set_sensitive(true);
@@ -1415,7 +1349,7 @@ impl GuiWindow{
                     gui.window.set_default_height(gui.height);
   					gui.gww.set_state_check_button(true, &mut gui.tree());
             		gui.gww.set_state_check_button(true, &mut gui.ar());
-                    gui.info.set_label(READY_COPY);
+                    gui.info.set_label(&Text::GuiReadyCopy.as_string());
                 }
                 else{
                     gui.set_info(StateInfo::Invalide);
@@ -1427,7 +1361,7 @@ impl GuiWindow{
             Ok(_b) => {
             	
                 self.window.set_cursor_from_name(Some("progress"));
-                self.info.set_label(SCANNING_PROGRESS);
+                self.info.set_label(&Text::GuiScanningProgress.as_string());
                 self.set_info(StateInfo::Updating);
                 self.gww.files.as_ref().borrow_mut().clear();
                 self.tt_file.set_text("0");
@@ -1441,7 +1375,7 @@ impl GuiWindow{
                 }});
 			},
             Err(e) => {
-                self.info.set_label(e);
+                self.info.set_label(&e);
                 self.set_info(StateInfo::Invalide);
                 self.valider.set_sensitive(false);
             }

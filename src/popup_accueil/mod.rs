@@ -4,7 +4,7 @@ use gio::prelude::ApplicationExt;
 use gtk::{
     glib, prelude::GtkWindowExt, subclass::prelude::ObjectSubclassIsExt, traits::{BoxExt, ButtonExt}, Image
 };
-use crate::{app::{WIDTH,Cmd},header_bar};
+use crate::{app::{Cmd, WIDTH},header_bar, text::Text};
 
 glib::wrapper! {
     pub struct PopupAccueil(ObjectSubclass<imp::PopupAccueil>)
@@ -23,31 +23,27 @@ impl PopupAccueil{
             .property("icon-name", "tp")
             .build();
             
+            pop.init_hb(title);
             pop.imp().action.replace(Cmd::None);
             pop
     }
     /// Initialise la "header bar" de l'interface [`PopupAccueil`].
-    fn init_hb(&self){
+    fn init_hb(&self,title:&str){
         let this = self.clone();
-        self.set_titlebar(Some(&header_bar::new("Tri Photo: Accueil",move || { this.application().unwrap().quit()})));
+        self.set_titlebar(Some(&header_bar::new(title,move || { this.application().unwrap().quit()})));
     }
     /// Initialise le texte de l'interface [`PopupAccueil`].
     fn init_label(&self){
         let imp = self.imp();
-        imp.label.set_text("Bienvenu,
-
-Vous pourrez trier vos \"Photos\", en fonction de leurs dates de prise de vue et de leurs géolocalisations (si disponible lors de la prise de vue).
-
-Vous pouvez aussi choisir de renomer les photographies, ainsi que de supprimer le contenu du répertoire source.
-            ");
+        imp.label.set_text(&Text::PopupAccueilHomeMessage.as_string());
     }
-    /// Initialisation des boutons de l'interface [`PopupAccueil`].
+    /// Initialisation des boutons de l'interface [`PopupAccueil`].Sorting program for photos
     fn set_icon_button(&self){
         let imp = self.imp();
                 
         let hbox =gtk::Box::new(gtk::Orientation::Horizontal,5);
         let image = Image::builder().resource("/org/gtk_rs/tri_photo/suivant.png").build();
-        let label_ok= gtk::Label::new(Some("Suivant"));
+        let label_ok= gtk::Label::new(Some(&Text::Next.as_string()));
         hbox.append(&image);
         hbox.append(&label_ok);
         imp.button_ok.set_child(Some(&hbox));
@@ -60,7 +56,7 @@ Vous pouvez aussi choisir de renomer les photographies, ainsi que de supprimer l
 
         let hbox =gtk::Box::new(gtk::Orientation::Horizontal,5);
         let image = Image::builder().resource("/org/gtk_rs/tri_photo/quit.png").build();
-        let label_ok= gtk::Label::new(Some("Quitter"));
+        let label_ok= gtk::Label::new(Some(&Text::Quitter.as_string()));
         hbox.append(&image);
         hbox.append(&label_ok);
         imp.button_cancel.set_child(Some(&hbox));
@@ -73,7 +69,7 @@ Vous pouvez aussi choisir de renomer les photographies, ainsi que de supprimer l
 
         let hbox =gtk::Box::new(gtk::Orientation::Horizontal,5);
         let image = Image::builder().resource("/org/gtk_rs/tri_photo/load.png").build();
-        let label_ok= gtk::Label::new(Some("Charger"));
+        let label_ok= gtk::Label::new(Some(&Text::Load.as_string()));
         hbox.append(&image);
         hbox.append(&label_ok);
         imp.button_load.set_child(Some(&hbox));

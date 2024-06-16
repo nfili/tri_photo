@@ -20,11 +20,19 @@ pub struct Working {
 	#[template_child]
 	pub data_name: TemplateChild<gtk::Label>,
 	#[template_child]
+	pub chemin: TemplateChild<gtk::Label>,
+	#[template_child]
 	pub data_path: TemplateChild<gtk::Label>,
+	#[template_child]
+	pub date: TemplateChild<gtk::Label>,
 	#[template_child]
 	pub data_date: TemplateChild<gtk::Label>,
 	#[template_child]
+	pub lieu: TemplateChild<gtk::Label>,
+	#[template_child]
 	pub data_geoloc: TemplateChild<gtk::Label>,
+	#[template_child]
+	pub status: TemplateChild<gtk::Label>,
 	#[template_child]
 	pub copy_status: TemplateChild<gtk::Label>,
 	#[template_child]
@@ -36,7 +44,11 @@ pub struct Working {
 	#[template_child]
 	pub quit: TemplateChild<gtk::Button>,
 	#[template_child]
+	pub quit_label: TemplateChild<gtk::Label>,
+	#[template_child]
 	pub rec_quit: TemplateChild<gtk::Button>,
+	#[template_child]
+	pub save_and_quit: TemplateChild<gtk::Label>,
 
 	// Attribut de fonctionnement
 	pub files: Arc<Mutex<GestFiles>>,

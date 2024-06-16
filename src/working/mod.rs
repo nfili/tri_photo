@@ -1,4 +1,6 @@
 mod imp;
+mod message;
+mod rename;
 use glib::IsA;
 use gtk::{
 	gdk_pixbuf::Pixbuf,
@@ -10,16 +12,20 @@ use gtk::{
 	Align, Box, Button, Image, Label, Orientation, Picture, TemplateChild, Window
 };
 use crate::{
-	app::{HEIGHT, WIDTH}, 
+	app::{HEIGHT, NAME, WIDTH}, 
 	file::File,
 	file_choser::new_save, 
 	gest_files::GestFiles,
-	header_bar, 
-	message::{Message, TypeMessage},
-	rename::Rename
+	header_bar,
+	working::{
+		message::{Message,TypeMessage},
+		rename::Rename
+		}, 
+	text::Text
 };
 use std::{io::Write, thread, time::Duration, usize};
 use conv::ValueFrom;
+
 
 const EXTENSION: &str = ".tps";
 
@@ -89,6 +95,7 @@ impl Working {
          	.property("icon-name","tp")
          	.build();
 
+         working.init_text();
          working.set_option(option);
          working.set_decorated(false);
          working.set_state_copy(StateCopy::Init);
@@ -97,6 +104,23 @@ impl Working {
 		 working
 	}
 	
+	fn init_text(&mut self){
+		let imp = self.imp();
+		imp.title.set_label(&Text::WorkingTitle.as_string());
+		imp.progress_status.set_label(&Text::DataWait.as_string());
+		imp.data_name.set_label(&Text::WorkingDataNone.as_string());
+		imp.chemin.set_label(&Text::WorkingChemin.as_string());
+		imp.data_path.set_label(&Text::WorkingDataNone.as_string());
+		imp.date.set_label(&Text::WorkingDate.as_string());
+		imp.data_date.set_label(&Text::WorkingDate.as_string());
+		imp.lieu.set_label(&Text::WorkingLieu.as_string());
+		imp.data_geoloc.set_label(&Text::WorkingDataNone.as_string());
+		imp.status.set_label(&Text::WorkingStatus.as_string());
+		imp.copy_status.set_label(&Text::WorkingDataNone.as_string());
+		imp.quit_label.set_label(&Text::Quitter.as_string());
+		imp.save_and_quit.set_label(&Text::WorkingSaveAndQuit.as_string());
+
+	}
 	/// Fonction qui gère l'initialisation des boutons de l'interface gtk
 	pub fn init(&self){
 	    self.connect_close_request(|obj|{
@@ -134,11 +158,13 @@ impl Working {
     fn quit(&mut self,tmp_sta_copy: StateCopy,tmp_sta_trans: StateTrans){
     	self.set_state_copy(StateCopy::Stop);
 		self.set_state_trans(StateTrans::Wait);
-		let message= "Vous allez quitter le programme,
- le listing des fichiers à copier/renomer sera perdu,
- je vous conseille de sauvegarder pour quitter.";
-        let quit_test = Message::new(&self.application().unwrap(),"Quitter le programme",message,
-        	Some(&(("Retour","/org/gtk_rs/tri_photo/retour.png"),("Quitter","/org/gtk_rs/tri_photo/quit.png"))),
+		// let message= "Vous allez quitter le programme,
+ // le listing des fichiers à copier/renomer sera perdu,
+ // je vous conseille de sauvegarder pour quitter.";
+ 		let message = &Text::WorkingQuitMessageMess.as_string();
+        let quit_test = Message::new(&self.application().unwrap(),&Text::WorkingQuitMessageTitle.as_string(),message,
+        	Some(&((&Text::Cancel.as_string(),"/org/gtk_rs/tri_photo/retour.png"),
+        		(&Text::Quitter.as_string(),"/org/gtk_rs/tri_photo/quit.png"))),
         	TypeMessage::Information,&self);
         let this = self.clone();
         quit_test.connect_close_request(move | obj |{
@@ -202,12 +228,13 @@ impl Working {
      # -> retourne la fenetre Message
      * */
 	fn init_warning(&mut self) -> Message {
-		let message = "Vous avez choisi de supprimer
- les anciens fichiers cette action est irréversible,
- les fichiers supprimés ne seront pas récupérable";
-
-		let warning = Message::new(&self.application().unwrap(),"Avertissement critique",message,
-        	Some(&(("Quitter","/org/gtk_rs/tri_photo/quit.png"),("J'ai compris","/org/gtk_rs/tri_photo/ok_hand.png"))),
+// 		let message = "Vous avez choisi de supprimer
+ // les anciens fichiers cette action est irréversible,
+ // les fichiers supprimés ne seront pas récupérable";
+ 		let message = &Text::WorkingInitWarningMess.as_string();
+		let warning = Message::new(&self.application().unwrap(),&Text::WorkingInitWarningTitle.as_string(),message,
+        	Some(&((&Text::Quitter.as_string(),"/org/gtk_rs/tri_photo/quit.png"),
+        		(&Text::WorkingInitWarningBtn.as_string(),"/org/gtk_rs/tri_photo/ok_hand.png"))),
         	TypeMessage::Attention,&self);
 		//  Bouton valider
 		warning.connect_close_request({
@@ -238,10 +265,12 @@ impl Working {
         	.modal(true)
         	.build();
         let this = self.clone();
-        win.set_titlebar(Some(&header_bar::new("Tri Photo : Choix pour le fichiers", move || { this.application().unwrap().quit() } )));
+        win.set_titlebar(Some(&header_bar::new(&(NAME.to_owned()+&Text::WorkingChosseOnDemandTitle.as_string()),
+         move || { this.application().unwrap().quit() } )));
 		let v_box = Box::new(Orientation::Vertical,10);
 		v_box.set_valign(Align::Center);
-		let lab_message = Label::new(Some("Vous avez choisi de gérer les fichiers au fur et à mesure"));
+		// let lab_message = Label::new(Some("Vous avez choisi de gérer les fichiers au fur et à mesure"));
+		let lab_message = Label::new(Some(&Text::WorkingChooseOnDemandMess.as_string()));
 		// Boutton copier
 		let h_box_copier = Box::new(Orientation::Horizontal,5);
 		let copier = Button::builder().build();
@@ -249,7 +278,7 @@ impl Working {
 			.resource("/org/gtk_rs/tri_photo/copier.png")
 			.build();
 		img_copier.set_icon_size(gtk::IconSize::Large);
-		let lab_copier = Label::new(Some("Copier"));
+		let lab_copier = Label::new(Some(&Text::Copy.as_string()));
 		h_box_copier.append(&img_copier);
 		h_box_copier.append(&lab_copier);
 		copier.set_child(Some(&h_box_copier));
@@ -262,7 +291,7 @@ impl Working {
 			.resource("/org/gtk_rs/tri_photo/renomer.png")
 			.build();
 		img_rename.set_icon_size(gtk::IconSize::Large);
-		let lab_rename = Label::new(Some("Renomer"));
+		let lab_rename = Label::new(Some(&Text::Rename.as_string()));
 		h_box_rename.append(&img_rename);
 		h_box_rename.append(&lab_rename);
 		rename.set_child(Some(&h_box_rename));
@@ -275,7 +304,7 @@ impl Working {
 			.resource("/org/gtk_rs/tri_photo/save.png")
 			.build();
 		img_save.set_icon_size(gtk::IconSize::Large);
-		let lab_save = Label::new(Some("Sauvegarder"));
+		let lab_save = Label::new(Some(&Text::Save.as_string()));
 		h_box_save.append(&img_save);
 		h_box_save.append(&lab_save);
 		save.set_child(Some(&h_box_save));
@@ -288,7 +317,7 @@ impl Working {
 			.resource("/org/gtk_rs/tri_photo/quit.png")
 			.build();
 		img_quit.set_icon_size(gtk::IconSize::Large);
-		let lab_quit = Label::new(Some("Quitter"));
+		let lab_quit = Label::new(Some(&Text::Quitter.as_string()));
 		h_box_quit.append(&img_quit);
 		h_box_quit.append(&lab_quit);
 		quit.set_child(Some(&h_box_quit));
@@ -301,7 +330,7 @@ impl Working {
 			.resource("/org/gtk_rs/tri_photo/supprimer.png")
 			.build();
 		img_delete.set_icon_size(gtk::IconSize::Large);
-		let lab_delete = Label::new(Some("Supprimer"));
+		let lab_delete = Label::new(Some(&Text::WorkingChooseOnDemandDelete.as_string()));
 		h_box_delete.append(&img_delete);
 		h_box_delete.append(&lab_delete);
 		delete.set_child(Some(&h_box_delete));
@@ -351,6 +380,7 @@ impl Working {
 				let mut this = this.clone();
 				obj.set_cursor_from_name(Some("grabbing"));
 				this.set_state_copy(StateCopy::Deleted);
+				this.set_status(&Text::WorkingChooseOnDemandDeleteStatus.as_string());
 				this_win.close();
 		}});
 		rename.connect_clicked({
@@ -360,7 +390,7 @@ impl Working {
 				obj.set_cursor_from_name(Some("grabbing"));
 				let mut this = this.clone();
 				this.set_state_copy(StateCopy::Rename);
-				this.set_status("Renomage en cours...");
+				this.set_status(&Text::WorkingChooseOndemandRenameStatus.as_string());
 				let _= this.rename(file.clone());
 				this_win.close();
 		}});
@@ -371,6 +401,7 @@ impl Working {
 				let mut this= this.clone();
 				obj.set_cursor_from_name(Some("grabbing"));
 				this.set_state_copy(StateCopy::ChoosedOnDemand);
+				this.set_status(&Text::WorkingChooseOnDemandCopyStatus.as_string());
 				this_win.close();
 		}});
 		win
@@ -451,7 +482,7 @@ impl Working {
 			 * */
 			fn get_date_label(date: (u16,u8,u8)) -> String {
 			 	if date.0 == 1970 && date.1 == 1 && date.2 == 1{
-			 		return String::from("inconnue")
+			 		return String::from(&Text::WorkingUnknow.as_string())
 			 	}
 			 	date.0.to_string() +"/"+ &date.1.to_string() + "/" + &date.2.to_string()
 			}
@@ -463,7 +494,7 @@ impl Working {
 			 * */
 			fn get_geoloc_data(binding: String) -> String{
 			 	if binding == "None"{
-			 		return String::from("Inconue")
+			 		return String::from(&Text::WorkingUnknow.as_string())
 			 	}
 			 	return binding
 			 }
@@ -583,9 +614,10 @@ impl Working {
         					this.set_states(StateCopy::Wait,StateTrans::Wait);
         				},
         				Tache::Verif =>  {
+        					let np=&Text::GestFilesNotPhoto.as_string();
         					let photo = match v.is_photo(){
 								true =>"",
-								false=>"/not_photo",
+								false=>np,
         					};
         					let path = v.create_path_dir(this.path_dest()+photo,
     						&this.option())+"/"+&v.id_number().to_string()+"_"+v.name().as_str();
@@ -636,13 +668,13 @@ impl Working {
 							//  si on doit renomer et que la tâche n'est pas accomplie
 			    			else if rename.to_owned() == true  && !this.is_renamed(){
 								this.set_state_copy(StateCopy::Rename);
-								this.set_status("Renomage en cours...");
+								this.set_status(&Text::WorkingChooseOndemandRenameStatus.as_string());
 			    				let _ = this.rename(value.clone());
 			    			}
 			    			// si on a choisir de décider au dernier moment
 			    			else if choose_on_demand.to_owned() == true && !this.is_choosed(){
 			    				this.set_state_copy(StateCopy::ChoosingOnDemand);
-			    				this.set_status("Gestion personnalisée en cours...");
+			    				this.set_status(&Text::WorkingChooseOnDemandStatus.as_string());
 			    				let _ = this.choose(value.clone());
 			    			}
 			    			// sinon on modifi l'état de copy à Coping
@@ -654,7 +686,7 @@ impl Working {
 				    	else {
 				    		this.set_state_copy(StateCopy::Coping);
 				    	}
-						this.set_status("Copie en cours...");
+						this.set_status(&Text::WorkingChooseOnDemandCopyStatus.as_string());
 						//  Vérification de l'état de copi, si Coping, on lance la copi
 				    	if this.state_copy() == StateCopy::Coping{
 			    			set_data(&this,&value);
@@ -669,7 +701,8 @@ impl Working {
 		    	}
 		    	Err(std::sync::mpsc::TryRecvError::Empty) => ControlFlow::Continue,
 		    	Err(std::sync::mpsc::TryRecvError::Disconnected) => {
-		    		let win = Message::quit(&this.application().unwrap(), "Copie terminée", "La copie des fichiers est terminée", &this);
+		    		let win = Message::quit(&this.application().unwrap(),&(NAME.to_owned()+&Text::WorkingFinishedCopyTitle.as_string()),
+		    		 &Text::WorkingFinishedCopyMess.as_string(), &this);
 			        win.connect_close_request({
 			        	let this= this.clone();
 			        	move |_obj|{
@@ -691,7 +724,7 @@ impl Working {
 	 * i (&mut usize) l'index dans la liste de fichier
 	 * */
 	fn sender(&mut self,tx:std::sync::mpsc::Sender<File>,v:File,i:&mut usize){
-		self.set_status("Initialisation ");
+		self.set_status(&Text::WorkingSenderStatusInit.as_string());
 		self.set_state_trans(StateTrans::Sending);
 		let tx = tx.clone();
 		self.set_current_id_file(*i);
@@ -724,7 +757,7 @@ impl Working {
 	 * value (File) fichier à renomer
 	 * */
 	fn rename(&mut self,value:File){
-		let rename= Rename::new(&self.application().unwrap(),"Renomer le fichier",&value.clone().name(),&self);
+		let rename= Rename::new(&self.application().unwrap(),&Text::WorkingRenameTitle.as_string(),&value.clone().name(),&self);
 		self.set_state_copy(StateCopy::Rename);
 		let this = self.clone();
 		rename.connect_close_request(move |obj|{
@@ -751,7 +784,7 @@ impl Working {
 	 * */
 	fn end_copy(&mut self,index: usize,file: File) -> Result<bool,&'static str> {
 		self.set_file_at(index,file.clone());
-		self.set_status("Copié");
+		self.set_status(&Text::WorkingEndCopyStatus.as_string());
 		self.set_is_copied(true);
 		self.set_states(StateCopy::Copied,StateTrans::Finished);
 		Ok(true)
@@ -759,7 +792,7 @@ impl Working {
 	/// Fonction qui gère la fin du processus de gestion du fichier
 	fn end_choose(&mut self) -> Result<bool,&'static str>{
 		self.set_is_choosing(true);
-		self.set_status("Choix effectué");
+		self.set_status(&Text::WorkingEndChooseOnDemandStatus.as_string());
 		self.set_state_trans(StateTrans::Finished);
 		Ok(true)
 	}
@@ -772,7 +805,7 @@ impl Working {
 	 * */
 	fn end_rename(&mut self, name: String, file: &mut File) -> Result<bool, &'static str> {
 		self.set_name_of_file(name, file);
-		self.set_status("Renomé");
+		self.set_status(&Text::WorkingEndRenameStatus.as_string());
 		self.set_is_renamed(true);
 		self.set_states(StateCopy::Renamed,StateTrans::Finished);
 		Ok(true)
