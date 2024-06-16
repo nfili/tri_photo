@@ -10,7 +10,10 @@ use gtk::{
 		BoxExt, ButtonExt, CheckButtonExt, DialogExtManual, EditableExt, FileChooserExt, GridExt, GtkWindowExt, WidgetExt
 	}, Align, Button, CheckButton, Entry, Frame, Grid, IconSize, Image, Label, Orientation, Picture, Widget, Window
 };
-use crate::{app::{human_read, is_valid_taille, Cmd, HEIGHT, VERSION, WIDTH}, file_choser::new_select, gest_files::GestFiles, header_bar, gui::help_gui::HelpGui, text::Text};
+use crate::{
+	app::{human_read, is_valid_taille, Cmd, HEIGHT, VERSION, WIDTH},
+	file_choser::new_select, gest_files::GestFiles, header_bar, gui::help_gui::HelpGui, text::Text
+};
 
 use self::gif_paintable::GifPaintable;
 
