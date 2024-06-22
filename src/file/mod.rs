@@ -85,7 +85,7 @@ impl File {
     		_ => {
     			match file.open_other(path){
     				Ok(..) =>(),
-    				Err(e) => return Err(e.to_string()),
+    				Err(e) => return Err(format!("{}",e)),
     			};
 			},
 		}
@@ -97,7 +97,7 @@ impl File {
 	 * 
 	 # -> Retourne une erreur en cas d'échec
 	 * */
-	fn open_jpg_tiff(&mut self, file: std::fs::File) -> Result<(), String> {
+	fn open_jpg_tiff(&mut self, file: std::fs::File) -> Result<(), String > {
 		let mut bufreader = std::io::BufReader::new(&file);
 		let exif = match exif::Reader::new().read_from_container(&mut bufreader){
 			Ok(ex) => ex,
@@ -232,7 +232,7 @@ impl File {
 						}
 						else{
 							p += "/";
-							let mois:String = match self.date.1{
+							let mois = match self.date.1{
 								1=>Text::FileJanvier.as_string(),
 								2=>Text::FileFevrier.as_string(),
 								3=>Text::FileMars.as_string(),
@@ -245,7 +245,7 @@ impl File {
 								10=>Text::FileOctobre.as_string(),
 								11=>Text::FileNovembre.as_string(),
 								12=>Text::FileDecembre.as_string(),
-								_ =>"".to_string(),
+								_ =>"".to_owned(),
 							};
 							p += &mois;
 						}

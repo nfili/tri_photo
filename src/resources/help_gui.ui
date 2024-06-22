@@ -21,7 +21,6 @@
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkLabel" id="welcome">
-                    <property name="label">Bienvenue dans l'aide du programme</property>
                     <property name="margin-start">12</property>
                     <property name="hexpand">true</property>
                     <attributes>
@@ -35,7 +34,6 @@
         </child>
         <child>
           <object class="gtkFrame" id="working">
-            <property name="label" >Répertoire de travail</property>
             <child>
               <object class="gtkBox">
                 <property name="orientation">vertical</property>
@@ -51,7 +49,6 @@
                     <property name="halign">center</property>
                     <child>
                       <object class="GtkLabel" id="working_description">
-                        <property name="label">Cette section permet de choisir les répertoires utilisés par le programme pour travailler.</property>
                         <attributes>
                           <attribute name="style" value="PANGO_STYLE_ITALIC"/>
                         </attributes>
@@ -72,7 +69,6 @@
                     </child>
                     <child>
                       <object class="GtkLabel" id="working_source">
-                        <property name="label" translatable="yes">- Source: </property>
                         <property name="halign">end</property>
                         <property name="margin-end">15</property>
                         <attributes>
@@ -86,7 +82,6 @@
                     </child>
                     <child>
                       <object class="GtkLabel" id="working_source_description">
-                        <property name="label" translatable="yes">Répertoire contenant les photos à copier.</property>
                         <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
@@ -96,7 +91,6 @@
                     </child>
                     <child>
                       <object class="GtkLabel" id="working_destination">
-                        <property name="label" translatable="yes">- Déstination: </property>
                         <property name="halign">end</property>
                         <property name="margin-end">15</property>
                         <attributes>
@@ -110,7 +104,6 @@
                     </child>
                     <child>
                       <object class="GtkLabel" id="working_destination_description">
-                        <property name="label" translatable="yes">Répertoire ou seront copiées les photos.</property>
                         <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
@@ -120,7 +113,6 @@
                     </child>
                     <child>
                       <object class="GtkLabel" id="working_file_found">
-                        <property name="label" translatable="yes">- Fichiers trouvés: </property>
                         <property name="halign">end</property>
                         <property name="margin-end">15</property>
                         <attributes>
@@ -134,7 +126,6 @@
                     </child>
                     <child>
                       <object class="GtkLabel" id="working_file_found_description">
-                        <property name="label" translatable="yes">Indique le nombre de fichiers trouvés,</property>
                         <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
@@ -144,7 +135,6 @@
                     </child>
                     <child>
                       <object class="GtkLabel" id="working_file_found_description2">
-                        <property name="label" translatable="yes">la taille des fichiers à copier et</property>
                         <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
@@ -154,7 +144,6 @@
                     </child>
                     <child>
                       <object class="GtkLabel" id="working_file_found_description3">
-                        <property name="label" translatable="yes"> la taille du répertoire de destination.</property>
                         <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
@@ -164,7 +153,6 @@
                     </child>
                     <child>
                       <object class="GtkLabel" id="working_info">
-                        <property name="label" translatable="yes">- Information: </property>
                         <property name="halign">end</property>
                         <property name="margin-end">15</property>
                         <attributes>
@@ -178,7 +166,6 @@
                     </child>
                     <child>
                       <object class="GtkLabel" id="working_info_description">
-                        <property name="label" translatable="yes">Indique l'état du programme.</property>
                         <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
@@ -194,7 +181,6 @@
         </child>
         <child>
           <object class="gtkFrame" id="file_at_found">
-            <property name="label">Fichiers à trouver</property>
             <child>
               <object class="gtkBox">
                 <property name="orientation">vertical</property>
@@ -202,7 +188,6 @@
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkLabel" id="file_at_found_description">
-                    <property name="label" translatable="yes">Cette section permet de sélectionner le type de fichier image à chercher.</property>
                     <property name="margin-top">5</property>
                     <property name="margin-bottom">5</property>
                     <property name="margin-start">5</property>
@@ -218,7 +203,6 @@
         </child>
         <child>
           <object class="gtkFrame" id="arbos">
-            <property name="label">Aborescence du tri</property>
             <child>
               <object class="gtkBox">
                 <property name="orientation">vertical</property>
@@ -234,9 +218,6 @@
                     <property name="halign">center</property>
                     <child>
                       <object class="GtkLabel" id="arbo_description">
-
-                        <property name="label" translatable="yes">Cette section permet de sélectionner l'arborescence voulue pour le tri des photos,
-si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</property>
                         <attributes>
                           <attribute name="style" value="PANGO_STYLE_ITALIC"/>
                         </attributes>
@@ -257,7 +238,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel" id="arbo_annee">
-                        <property name="label" translatable="yes">- Année: </property>
                         <property name="halign">end</property>
                         <property name="margin-end">10</property>
                         <attributes>
@@ -271,7 +251,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel" id="arbo_annee_description">
-                        <property name="label" translatable="yes">Crée un repertoire en fonction de l'année de la prise de vue.</property>
                         <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
@@ -281,7 +260,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel" id="arbo_mois">
-                        <property name="label" translatable="yes">- Mois: </property>
                         <property name="halign">end</property>
                         <property name="margin-end">10</property>
                         <attributes>
@@ -295,7 +273,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel" id="arbo_mois_description">
-                        <property name="label" translatable="yes">Crée un (sous-)repertoire en fonction du mois de la prise de vue.</property>
                         <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
@@ -305,7 +282,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel" id="arbo_jours">
-                        <property name="label" translatable="yes">- Jours: </property>
                         <property name="halign">end</property>
                         <property name="margin-end">10</property>
                         <attributes>
@@ -319,7 +295,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel" id="arbo_jours_description">
-                        <property name="label" translatable="yes">Crée un (sous-)repertoire en fonction du jours de la prise de vue.</property>
                         <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
@@ -329,7 +304,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel" id="arbo_lieu">
-                        <property name="label" translatable="yes">- Lieu: </property>
                         <property name="halign">end</property>
                         <property name="margin-end">10</property>
                         <attributes>
@@ -343,7 +317,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel" id="arbo_lieu_description">
-                        <property name="label" translatable="yes">Crée un (sous-)repertoire en fonction du lieu de la prise de vue.</property>
                         <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
@@ -353,7 +326,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel" id="arbo_letter">
-                        <property name="label" translatable="yes">- mois en lettre: </property>
                         <property name="halign">end</property>
                         <property name="margin-end">10</property>
                         <attributes>
@@ -367,7 +339,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel" id="arbo_letter_description">
-                        <property name="label" translatable="yes">Crée les (sous-)repertoires du mois en lettre.</property>
                         <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
@@ -383,7 +354,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
         </child>
         <child>
           <object class="gtkFrame" id="traitement">
-            <property name="label">Traitement</property>
             <child>
               <object class="gtkBox">
                 <property name="orientation">vertical</property>
@@ -399,7 +369,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     <property name="halign">center</property>
                     <child>
                       <object class="GtkLabel" id="traitement_description">
-                        <property name="label" translatable="yes">Cette section permet de selectionner les actions à effectuer aprés la fin du tri.</property>
                         <attributes>
                           <attribute name="style" value="PANGO_STYLE_ITALIC"/>
                         </attributes>
@@ -420,7 +389,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel" id="traitement_renomer">
-                        <property name="label" translatable="yes">- Renomer les fichiers: </property>
                         <property name="halign">end</property>
                         <property name="margin-end">20</property>
                         <attributes>
@@ -434,7 +402,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel" id="traitement_renomer_description">
-                        <property name="label" translatable="yes">Permet de renomer les fichiers triés.</property>
                         <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
@@ -444,7 +411,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel" id="traitement_delete">
-                        <property name="label" translatable="yes">- Supprimer les sources: </property>
                         <property name="halign">end</property>
                         <property name="margin-end">20</property>
                         <attributes>
@@ -458,7 +424,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel" id="traitement_delete_description">
-                        <property name="label" translatable="yes">Permet de supprimer les sources.</property>
                         <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
@@ -468,7 +433,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel" id="traitement_gestion">
-                        <property name="label" translatable="yes">- Choisir au fur et à mesure: </property>
                         <property name="halign">end</property>
                         <property name="margin-end">20</property>
                         <attributes>
@@ -482,7 +446,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel" id="traitement_gestion_description">
-                        <property name="label" translatable="yes">Permet de séléctionner l'action à</property>
                         <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
@@ -492,7 +455,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel" id="traitement_gestion_description2">
-                        <property name="label" translatable="yes">effectuer en temps réel.</property>
                         <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>

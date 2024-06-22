@@ -1,7 +1,6 @@
 /**
     Ce module permet de gérer le comportement du programme au lancement,
     initialise les différentes fenetres du programme, les constantes de fonctionnement
-    et la langue
     * */
     use std::{io::{BufRead, BufReader}, path::{Path, PathBuf}, process::exit};
     use gtk::{
@@ -17,6 +16,7 @@
     pub const VERSION: & str = env!("CARGO_PKG_VERSION");
     pub const HEIGHT: i32 = 250;
     pub const WIDTH: i32 = 400;
+
 
     #[derive(Default,Debug,Clone,Eq,Hash,PartialEq)]
     pub enum Cmd {

@@ -1,10 +1,7 @@
-use tri_photo::app::run_gui;
+use tri_photo::{app::run_gui, text::Text};
 extern crate byte_unit;
 
-#[macro_use]
-pub extern crate tr;
-fn main() ->std::io::Result<()> {
-    tr_init!("locale");
+fn main() ->std::io::Result<()> {  
     run_gui();  
     Ok(())
-}
+}   
