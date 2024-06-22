@@ -24,6 +24,7 @@
 //!	* [geo] gére la localisation d'une photo lorsque c'est possible
 //!	* [directory] gére les fonctions sur répertoire
 
+
 pub mod app;
 pub mod file;
 pub mod directory;
