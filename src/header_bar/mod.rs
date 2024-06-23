@@ -1,15 +1,12 @@
-use gtk::Align;
-use gtk::Button;
-use gtk::Image;
-use gtk::Label;
-use gtk::Orientation;
-
 use gtk::{
 	Box,
+	Align,
+	Button,
+	Image,
+	Label,
+	Orientation,
 	prelude::{BoxExt,ButtonExt,WidgetExt}
 };
-
-
 
 pub fn new<F>(title: &str,callback: F) -> Box
 	where
@@ -32,11 +29,9 @@ pub fn new_with_widget_at_end<F>(title: &str, widgets: Vec<&Button>,callback: F)
 	where
 	F: Fn() + 'static {
 		let hbar = base(title);
-		
     	let hbar_quit = quit();
 		let btn_quit = Button::new();
 		btn_quit.set_child(Some(&hbar_quit));
-
         for wid in widgets{
         	hbar.append(wid);
         }
@@ -47,11 +42,9 @@ pub fn new_with_widget_at_end<F>(title: &str, widgets: Vec<&Button>,callback: F)
         ()});
         hbar
 }
-
 fn base(title: &str)->Box{
 	let hbar = Box::new(Orientation::Horizontal,0);
 	hbar.set_hexpand(true);
-	// hbar.set_height_request(20);
     hbar.set_css_classes(&["header_bar"]);
 
     let hbar_img = img();
@@ -60,10 +53,10 @@ fn base(title: &str)->Box{
     hbar.append(&hbar_title);
     hbar
 }
-
 fn img() -> Image {
 		gtk::Image::builder()
-		.icon_name("tp")
+		// .icon_name("tp")
+		.file("/usr/share/icons/hicolor/32x32/apps/tp.png")
     	.margin_start(0)
     	.width_request(32)
     	.build()

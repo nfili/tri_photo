@@ -1,6 +1,6 @@
 [package]
 name = "tri_photo"
-version = "0.1.0"  #:version
+version = "1.0.0"  #:version
 authors = ["Nicolas Filippozzi <nicolasfilippozzi@gmail.com>"]
 description = """
 tri_photo is a photo/image copy program, it can be installed on linux, mac or window.
@@ -29,10 +29,11 @@ conv = "0.3.2"
 regex = "1.10.2"
 chrono = "0.4.31"
 reverse_geocoder = "4.1.1"
-#cargo-generate-rpm = "0.14.0"
+gettext = "0.4.0"
 
 [build-dependencies]
 glib-build-tools = "0.18.0"
+
 
 [profile.deb]
 inherits = "release"
@@ -68,6 +69,7 @@ assets = [
 	["icons/128x128/tp.png","usr/share/icons/hicolor/128x128/apps/tp.png","644"],
 	["icons/256x256/tp.png","usr/share/icons/hicolor/256x256/apps/tp.png","644"],
 	["icons/512x512/tp.png","usr/share/icons/hicolor/512x512/apps/tp.png","644"],
+	["locale/fr/LC_MESSAGES/tp.mo","usr/share/locale/fr/LC_MESSAGES/tp.mo","644"],
 ]
 
 [package.metadata.generate-rpm]
@@ -96,6 +98,7 @@ assets = [
 	{ source = "icons/128x128/tp.png", dest = "/usr/share/icons/hicolor/128x128/apps/tp.png", mode = "644"},
 	{ source = "icons/256x256/tp.png", dest = "/usr/share/icons/hicolor/256x256/apps/tp.png", mode = "644"},
 	{ source = "icons/512x512/tp.png", dest = "/usr/share/icons/hicolor/512x512/apps/tp.png", mode = "644"},
+	{ source = "locale/fr/LC_MESSAGES/tp.mo", dest = "/usr/share/locale/fr/LC_MESSAGES/tp.mo", mode = "644"},
 ]
 
 [package.metadata.generate-rpm.requires]

@@ -2,7 +2,7 @@ mod imp;
 use gtk::{
     glib, prelude::{GtkWindowExt, WidgetExt}, subclass::prelude::ObjectSubclassIsExt, traits::{BoxExt, ButtonExt}, Image, Label
 };
-use crate::{header_bar,working::Working};
+use crate::{header_bar, text::Text, working::Working};
 
 /// Type de la fenetre de message
 #[derive(Copy,Clone,Debug,Default,PartialEq)]
@@ -57,7 +57,7 @@ impl Message{
         message.set_information(label);
         message.imp().valider.hide();
         let box_btn_ann = gtk::Box::new(gtk::Orientation::Horizontal,5);
-        Self::set_btn(&box_btn_ann, "Quitter","/org/gtk_rs/tri_photo/quit.png" );
+        Self::set_btn(&box_btn_ann, &Text::Quitter.as_string(),"/org/gtk_rs/tri_photo/quit.png" );
         message.imp().annuler.set_child(Some(&box_btn_ann));
         message.imp().annuler.connect_clicked({
         	let this = message.clone();
@@ -83,9 +83,9 @@ impl Message{
 		}
 		else{
 			// annuler
-			Self::set_btn(&box_btn_ann, "Annuler", "/org/gtk_rs/tri_photo/retour.png");
+			Self::set_btn(&box_btn_ann, &Text::Cancel.as_string(), "/org/gtk_rs/tri_photo/retour.png");
 	        // valider
-	        Self::set_btn(&box_btn_val, "Valider", "/org/gtk_rs/tri_photo/valid.png");	        
+	        Self::set_btn(&box_btn_val, &Text::Valid.as_string(), "/org/gtk_rs/tri_photo/valid.png");	        
 		}
 		let imp = self.imp();
 		imp.valider.set_child(Some(&box_btn_val));

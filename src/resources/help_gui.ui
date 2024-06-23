@@ -20,8 +20,7 @@
                 <property name="name">box_conteneur0</property>
                 <property name="spacing">6</property>
                 <child>
-                  <object class="GtkLabel">
-                    <property name="label">Bienvenue dans l'aide du programme</property>
+                  <object class="GtkLabel" id="welcome">
                     <property name="margin-start">12</property>
                     <property name="hexpand">true</property>
                     <attributes>
@@ -33,10 +32,8 @@
             </child>
           </object>
         </child>
-        
         <child>
-          <object class="gtkFrame">
-            <property name="label">Répertoire de travail</property>
+          <object class="gtkFrame" id="working">
             <child>
               <object class="gtkBox">
                 <property name="orientation">vertical</property>
@@ -48,9 +45,10 @@
                     <property name="margin-bottom">5</property>
                     <property name="margin-start">5</property>
                     <property name="margin-end">5</property>
+                    <property name="hexpand">true</property>
+                    <property name="halign">center</property>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Cette section permet de choisir les répertoires utilisés par le programme pour travailler.</property>
+                      <object class="GtkLabel" id="working_description">
                         <attributes>
                           <attribute name="style" value="PANGO_STYLE_ITALIC"/>
                         </attributes>
@@ -63,11 +61,6 @@
                     </child>
                     <child>
                       <object class="GtkLabel">
-                        <property name="label" translatable="yes">- Source: </property>
-                        <property name="margin-start">0</property>
-                        <attributes>
-                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
-                        </attributes>
                         <layout>
                           <property name="column">0</property>
                           <property name="row">1</property>
@@ -75,19 +68,9 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Répertoire contenant les photos à copier.</property>
-                        <property name="margin-end">50</property>
-                        <layout>
-                          <property name="column">1</property>
-                          <property name="row">1</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">- Déstination: </property>
-                        <property name="margin-start">35</property>
+                      <object class="GtkLabel" id="working_source">
+                        <property name="halign">end</property>
+                        <property name="margin-end">15</property>
                         <attributes>
                           <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
                         </attributes>
@@ -98,9 +81,8 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Répertoire ou seront copiées les photos.</property>
-                        <property name="margin-end">56</property>
+                      <object class="GtkLabel" id="working_source_description">
+                        <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
                           <property name="row">2</property>
@@ -108,9 +90,9 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">- Fichiers trouvés: </property>
-                        <property name="margin-start">63</property>
+                      <object class="GtkLabel" id="working_destination">
+                        <property name="halign">end</property>
+                        <property name="margin-end">15</property>
                         <attributes>
                           <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
                         </attributes>
@@ -121,9 +103,8 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Indique le nombre de fichiers trouvés,</property>
-                        <property name="margin-end">66</property>
+                      <object class="GtkLabel" id="working_destination_description">
+                        <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
                           <property name="row">3</property>
@@ -131,9 +112,21 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">la taille des fichiers à copier et</property>
-                        <property name="margin-end">118</property>
+                      <object class="GtkLabel" id="working_file_found">
+                        <property name="halign">end</property>
+                        <property name="margin-end">15</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">4</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="working_file_found_description">
+                        <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
                           <property name="row">4</property>
@@ -141,9 +134,8 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes"> la taille du répertoire de destination.</property>
-                        <property name="margin-end">85</property>
+                      <object class="GtkLabel" id="working_file_found_description2">
+                        <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
                           <property name="row">5</property>
@@ -151,25 +143,33 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">- Information: </property>
-                        <property name="margin-start">36</property>
-                        <attributes>
-                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
-                        </attributes>
+                      <object class="GtkLabel" id="working_file_found_description3">
+                        <property name="halign">start</property>
                         <layout>
-                          <property name="column">0</property>
+                          <property name="column">1</property>
                           <property name="row">6</property>
                         </layout>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Indique l'état du programme.</property>
-                        <property name="margin-end">125</property>
+                      <object class="GtkLabel" id="working_info">
+                        <property name="halign">end</property>
+                        <property name="margin-end">15</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">7</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="working_info_description">
+                        <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
-                          <property name="row">6</property>
+                          <property name="row">7</property>
                         </layout>
                       </object>
                     </child>
@@ -179,18 +179,15 @@
             </child>
           </object>
         </child>
-
         <child>
-          <object class="gtkFrame">
-            <property name="label">Fichiers à trouver</property>
+          <object class="gtkFrame" id="file_at_found">
             <child>
               <object class="gtkBox">
                 <property name="orientation">vertical</property>
                 <property name="name">box_conteneur0</property>
                 <property name="spacing">6</property>
                 <child>
-                  <object class="GtkLabel">
-                    <property name="label" translatable="yes">Cette section permet de sélectionner le type de fichier image à chercher.</property>
+                  <object class="GtkLabel" id="file_at_found_description">
                     <property name="margin-top">5</property>
                     <property name="margin-bottom">5</property>
                     <property name="margin-start">5</property>
@@ -204,10 +201,8 @@
             </child>
           </object>
         </child>
-
         <child>
-          <object class="gtkFrame">
-            <property name="label">Aborescence du tri</property>
+          <object class="gtkFrame" id="arbos">
             <child>
               <object class="gtkBox">
                 <property name="orientation">vertical</property>
@@ -222,9 +217,7 @@
                     <property name="hexpand">true</property>
                     <property name="halign">center</property>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Cette section permet de sélectionner l'arborescence voulue pour le tri des photos,
-si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</property>
+                      <object class="GtkLabel" id="arbo_description">
                         <attributes>
                           <attribute name="style" value="PANGO_STYLE_ITALIC"/>
                         </attributes>
@@ -237,11 +230,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel">
-                        <property name="label" translatable="yes">- Année: </property>
-                        <property name="margin-start">13</property>
-                        <attributes>
-                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
-                        </attributes>
                         <layout>
                           <property name="column">0</property>
                           <property name="row">1</property>
@@ -249,19 +237,9 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Crée un repertoire en fonction de l'année de la prise de vue.</property>
-                        <property name="margin-end">40</property>
-                        <layout>
-                          <property name="column">1</property>
-                          <property name="row">1</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">- Mois: </property>
-                        <property name="margin-start">3</property>
+                      <object class="GtkLabel" id="arbo_annee">
+                        <property name="halign">end</property>
+                        <property name="margin-end">10</property>
                         <attributes>
                           <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
                         </attributes>
@@ -272,9 +250,8 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Crée un (sous-)repertoire en fonction du mois de la prise de vue.</property>
-                        <property name="margin-end">16</property>
+                      <object class="GtkLabel" id="arbo_annee_description">
+                        <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
                           <property name="row">2</property>
@@ -282,9 +259,9 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">- Jours: </property>
-                        <property name="margin-start">4</property>
+                      <object class="GtkLabel" id="arbo_mois">
+                        <property name="halign">end</property>
+                        <property name="margin-end">10</property>
                         <attributes>
                           <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
                         </attributes>
@@ -295,9 +272,8 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Crée un (sous-)repertoire en fonction du jours de la prise de vue.</property>
-                        <property name="margin-end">14</property>
+                      <object class="GtkLabel" id="arbo_mois_description">
+                        <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
                           <property name="row">3</property>
@@ -305,9 +281,9 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">- Lieu: </property>
-                        <property name="margin-start">0</property>
+                      <object class="GtkLabel" id="arbo_jours">
+                        <property name="halign">end</property>
+                        <property name="margin-end">10</property>
                         <attributes>
                           <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
                         </attributes>
@@ -318,12 +294,55 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Crée un (sous-)repertoire en fonction du lieu de la prise de vue.</property>
-                        <property name="margin-end">24</property>
+                      <object class="GtkLabel" id="arbo_jours_description">
+                        <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
                           <property name="row">4</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="arbo_lieu">
+                        <property name="halign">end</property>
+                        <property name="margin-end">10</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">5</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="arbo_lieu_description">
+                        <property name="halign">start</property>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">5</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="arbo_letter">
+                        <property name="halign">end</property>
+                        <property name="margin-end">10</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">6</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="arbo_letter_description">
+                        <property name="halign">start</property>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">6</property>
                         </layout>
                       </object>
                     </child>
@@ -333,10 +352,8 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
             </child>
           </object>
         </child>
-
         <child>
-          <object class="gtkFrame">
-            <property name="label">Traitement</property>
+          <object class="gtkFrame" id="traitement">
             <child>
               <object class="gtkBox">
                 <property name="orientation">vertical</property>
@@ -351,8 +368,7 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     <property name="hexpand">true</property>
                     <property name="halign">center</property>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Cette section permet de selectionner les actions à effectuer aprés la fin du tri.</property>
+                      <object class="GtkLabel" id="traitement_description">
                         <attributes>
                           <attribute name="style" value="PANGO_STYLE_ITALIC"/>
                         </attributes>
@@ -365,11 +381,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                     </child>
                     <child>
                       <object class="GtkLabel">
-                        <property name="label" translatable="yes">- Renomer les fichiers: </property>
-                        <property name="margin-start">0</property>
-                        <attributes>
-                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
-                        </attributes>
                         <layout>
                           <property name="column">0</property>
                           <property name="row">1</property>
@@ -377,19 +388,9 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Permet de renomer les fichiers triés.</property>
-                        <property name="margin-end">22</property>
-                        <layout>
-                          <property name="column">1</property>
-                          <property name="row">1</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">- Supprimer les sources: </property>
-                        <property name="margin-start">8</property>
+                      <object class="GtkLabel" id="traitement_renomer">
+                        <property name="halign">end</property>
+                        <property name="margin-end">20</property>
                         <attributes>
                           <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
                         </attributes>
@@ -400,9 +401,8 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Supprime les sources en temps réel.</property>
-                        <property name="margin-end">28</property>
+                      <object class="GtkLabel" id="traitement_renomer_description">
+                        <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
                           <property name="row">2</property>
@@ -410,9 +410,9 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">- Choisir au fur et à mesure: </property>
-                        <property name="margin-start">33</property>
+                      <object class="GtkLabel" id="traitement_delete">
+                        <property name="halign">end</property>
+                        <property name="margin-end">20</property>
                         <attributes>
                           <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
                         </attributes>
@@ -423,9 +423,8 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Permet de séléctionner l'action à</property>
-                        <property name="margin-end">47</property>
+                      <object class="GtkLabel" id="traitement_delete_description">
+                        <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
                           <property name="row">3</property>
@@ -433,12 +432,33 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">effectuer en temps réel.</property>
-                        <property name="margin-end">98</property>
+                      <object class="GtkLabel" id="traitement_gestion">
+                        <property name="halign">end</property>
+                        <property name="margin-end">20</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_SEMIBOLD"/>
+                        </attributes>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">4</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="traitement_gestion_description">
+                        <property name="halign">start</property>
                         <layout>
                           <property name="column">1</property>
                           <property name="row">4</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="traitement_gestion_description2">
+                        <property name="halign">start</property>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">5</property>
                         </layout>
                       </object>
                     </child>
@@ -448,7 +468,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
             </child>
           </object>
         </child>
-        
         <child>
           <object class="gtkBox">
             <property name="halign">center</property>
@@ -477,7 +496,6 @@ si le fichier n'est pas une photo, un répertoire "not_photo" sera créé.</prop
               </child>
           </object>
         </child>
-        
       </object>
     </child>
   </template>

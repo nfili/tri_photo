@@ -32,12 +32,10 @@
                 <object class="GtkLabel" id="title">
                   <property name="hexpand">true</property>
                   <property name="halign">center</property>
-                  <property name="label" translatable="yes">Copie en cours, veuiller patienter</property>
                 </object>
               </child>
               <child>
               <object class="GtkLabel" id="progress_status">
-                <property name="label">en enttente de données</property>
               </object>
             </child>
           </object>
@@ -89,8 +87,7 @@
                         <class name="grid_copy"/>
                       </style>
                       <child>
-                        <object class="GtkLabel">
-                          <property name="label">Chemin</property>
+                        <object class="GtkLabel" id="chemin">
                           <property name="halign">end</property>
                           <property name="margin-top">8</property>
                           <layout>
@@ -110,7 +107,6 @@
                       </child>
                       <child>
                         <object class="GtkLabel" id="data_path">
-                          <property name="label">none</property>
                           <property name="halign">end</property>
                           <property name="margin-end">8</property>
                           <property name="hexpand">1</property>
@@ -121,8 +117,7 @@
                         </object>
                       </child>
                       <child>
-                        <object class="GtkLabel">
-                          <property name="label">Date</property>
+                        <object class="GtkLabel" id="date">
                           <property name="halign">end</property>
                           <layout>
                               <property name="column">0</property>
@@ -141,7 +136,6 @@
                       </child>
                       <child>
                         <object class="GtkLabel" id="data_date">
-                          <property name="label">none</property>
                           <property name="halign">end</property>
                           <property name="margin-end">8</property>
                           <layout>
@@ -151,8 +145,7 @@
                         </object>
                       </child>
                       <child>
-                        <object class="GtkLabel">
-                          <property name="label">Localisation</property>
+                        <object class="GtkLabel" id="lieu">
                           <property name="halign">end</property>
                           <property name="margin-start">8</property>
                           <layout>
@@ -172,7 +165,6 @@
                       </child>
                       <child>
                         <object class="GtkLabel" id="data_geoloc">
-                          <property name="label">none</property>
                           <property name="halign">end</property>
                           <property name="margin-end">8</property>
                           <layout>
@@ -183,8 +175,7 @@
                       </child>
                       <!-- copy of file -->
                       <child>
-                        <object class="GtkLabel">
-                          <property name="label" translatable="yes">Status</property>
+                        <object class="GtkLabel" id="status">
                           <property name="halign">end</property>
                           <property name="margin-start">8</property>
                           <layout>
@@ -204,7 +195,6 @@
                       </child>
                       <child>
                         <object class="GtkLabel" id="copy_status">
-                          <property name="label" translatable="yes">none</property> 
                           <property name="halign">end</property>
                           <property name="margin-end">8</property>
                           <layout>
@@ -275,8 +265,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label">Quitter</property>
+                      <object class="GtkLabel" id="quit_label">
                       </object>
                     </child>
                   </object>
@@ -301,8 +290,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label">Sauvegarder et quitter</property>
+                      <object class="GtkLabel" id="save_and_quit">
                       </object>
                     </child>
                   </object>

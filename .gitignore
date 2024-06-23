@@ -1,4 +1,5 @@
+.gitignore
 /target
 PKGBUILD
 .SRCINFO
-test.sh
+cargo.lock

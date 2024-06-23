@@ -2,6 +2,9 @@ use chrono::{Datelike,Utc};
 use std::{io::{Error,ErrorKind},path::Path};
 use exif::Field;
 
+
+use crate::text::Text;
+
 /**
  Structure contenant les données d'un fichier image tel que le nom, la date, la taille, l'extention, son identifiant
  * la donnée exposure mode permet avec une date valide de verifier si une image est une photo ou pas
@@ -47,10 +50,10 @@ impl File {
 	 Fonction créant un nouvel objet File 
 	 * 
 	 * */
-	pub fn new(path: String, extension: String, size: u64, id_number: u64) -> Result <File, &'static str>{
+	pub fn new(path: String, extension: String, size: u64, id_number: u64) -> Result <File, String>{
 		let f= match std::fs::File::open(path.clone()){
         	Ok(fi) => fi,
-        	Err(..) => return Err("Erreur d'ouverture chemin incorrect"),
+        	Err(..) => return Err(Text::FileErrOpen.as_string()),
     	};	
 
     	let name_array: Vec<&str> =  path.split('/').collect();
@@ -82,7 +85,7 @@ impl File {
     		_ => {
     			match file.open_other(path){
     				Ok(..) =>(),
-    				Err(..) => return Err("plateforme non supportée"),
+    				Err(e) => return Err(format!("{}",e)),
     			};
 			},
 		}
@@ -94,7 +97,7 @@ impl File {
 	 * 
 	 # -> Retourne une erreur en cas d'échec
 	 * */
-	fn open_jpg_tiff(&mut self, file: std::fs::File) -> Result<(), &'static str> {
+	fn open_jpg_tiff(&mut self, file: std::fs::File) -> Result<(), String > {
 		let mut bufreader = std::io::BufReader::new(&file);
 		let exif = match exif::Reader::new().read_from_container(&mut bufreader){
 			Ok(ex) => ex,
@@ -112,11 +115,11 @@ impl File {
 						match exif::Reader::new().read_raw(buf.get_ref().to_vec()){
 							Ok(ex) => ex,
 							Err(..) => {
-								return Err("toujours pas de donnée aprés avoir créer de nouvelle data EXIT")
+								return Err(Text::FileErrNoExif.as_string())
 							}
 						}
 					},
-					Err(..) => return Err("Impossible de créer des données exif"),
+					Err(..) => return Err(Text::FileErrNoWriteExif.as_string()),
 				}
 			}
 		};
@@ -187,7 +190,6 @@ impl File {
 	 * */
 	pub fn is_gps(&self) -> bool{
 		if !self.latitude.3.is_empty() && !self.longitude.3.is_empty(){
-			println!("latitude: {},longueur : {}",self.latitude.3,self.latitude.3.len());
 			if self.latitude.3.len() != 1 || self.longitude.3.len() != 1{
 				return false
 			}
@@ -230,21 +232,22 @@ impl File {
 						}
 						else{
 							p += "/";
-							p += match self.date.1{
-								1=>"Janvier",
-								2=>"Février",
-								3=>"Mars",
-								4=>"Avril",
-								5=>"Mai",
-								6=>"Juin",
-								7=>"Juillet",
-								8=>"Aout",
-								9=>"Septembre",
-								10=>"Octobre",
-								11=>"Novembre",
-								12=>"Décembre",
-								_ =>"",
+							let mois = match self.date.1{
+								1=>Text::FileJanvier.as_string(),
+								2=>Text::FileFevrier.as_string(),
+								3=>Text::FileMars.as_string(),
+								4=>Text::FileAvril.as_string(),
+								5=>Text::FileMai.as_string(),
+								6=>Text::FileJuin.as_string(),
+								7=>Text::FileJuillet.as_string(),
+								8=>Text::FileAout.as_string(),
+								9=>Text::FileSeptembre.as_string(),
+								10=>Text::FileOctobre.as_string(),
+								11=>Text::FileNovembre.as_string(),
+								12=>Text::FileDecembre.as_string(),
+								_ =>"".to_owned(),
 							};
+							p += &mois;
 						}
 					}
 					if option[2]{
@@ -273,20 +276,20 @@ impl File {
 	 * 
 	 # -> Retourne une erreur en cas d'échec
 	 * */
-	pub fn copy(&self,path_dest:String,option: bool) -> Result<bool,&'static str>{
+	pub fn copy(&self,path_dest:String,option: bool) -> Result<bool,String>{
 		return match std::fs::copy(self.path.to_string(), path_dest.to_string()+"/"+&self.id_number.to_string()+"_"+&self.name){
 			Ok(..) => {
 				if option{
 					match std::fs::remove_file(self.path.to_string()){
 						Ok(..) => (),
-						Err(_e) => return Err("Impossible de supprimer le fichiers source"),
+						Err(_e) => return Err(Text::FileErrDeleteSource.as_string()),
 					};
 
 				}
 				return Ok(true)
 			}
 			Err(..) => {
-				Err("Probléme lors de la copie")
+				Err(Text::FileErrCopy.as_string())
 			}
 		}
 	}

@@ -23,9 +23,7 @@
                 <property name="margin-start">10</property>
                 <property name="margin-end">10</property>
                 <child>
-                  <object class="GtkLabel" id="name">
-                     <property name="label" translatable="yes">nom du fichier</property>
-                  </object>
+                  <object class="GtkLabel" id="name"></object>
                 </child>
                 <child>
                   <object class="GtkEntry" id="new_name">

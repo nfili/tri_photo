@@ -5,7 +5,7 @@ use gtk::{
     traits::{ButtonExt,BoxExt},
     prelude::{EditableExt, GtkWindowExt, WidgetExt}
 };
-use crate::{working::Working, header_bar};
+use crate::{header_bar, text::Text, working::Working};
 
 glib::wrapper! {
     pub struct Rename(ObjectSubclass<imp::Rename>)
@@ -23,8 +23,8 @@ impl Rename{
             .build();
             
             rename.imp().name.set_label(name);
-            rename.imp().new_name.set_text("Nouveau nom");
-            rename.set_titlebar(Some(&header_bar::new_without_widget("Tri Photo : Renomer")));
+            rename.imp().new_name.set_text(&Text::RenameNewName.as_string());
+            rename.set_titlebar(Some(&header_bar::new_without_widget(title)));//"Tri Photo : Renomer"
             rename
     }
     
@@ -35,7 +35,7 @@ impl Rename{
         let pix =gtk::gdk_pixbuf::Pixbuf::from_resource("/org/gtk_rs/tri_photo/renomer.png").unwrap();
         let image = gtk::Image::from_pixbuf(Some(&pix));
         image.set_icon_size(gtk::IconSize::Inherit);
-        let label_ok= gtk::Label::new(Some("Renomer"));
+        let label_ok= gtk::Label::new(Some(&Text::Rename.as_string()));
         hbox.append(&image);
         hbox.append(&label_ok);
         imp.rec_quit.set_child(Some(&hbox));
@@ -49,7 +49,7 @@ impl Rename{
          let pix =gtk::gdk_pixbuf::Pixbuf::from_resource("/org/gtk_rs/tri_photo/save.png").unwrap();
         let image = gtk::Image::from_pixbuf(Some(&pix));
         image.set_icon_size(gtk::IconSize::Inherit);
-        let label_ok= gtk::Label::new(Some("Conserver"));
+        let label_ok= gtk::Label::new(Some(&Text::RenameKeep.as_string()));
         hbox.append(&image);
         hbox.append(&label_ok);
         imp.quit.set_child(Some(&hbox));

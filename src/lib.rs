@@ -24,6 +24,7 @@
 //!	* [geo] gére la localisation d'une photo lorsque c'est possible
 //!	* [directory] gére les fonctions sur répertoire
 
+
 pub mod app;
 pub mod file;
 pub mod directory;
@@ -33,8 +34,6 @@ pub mod gui;
 pub mod popup_accueil;
 pub mod gresources;
 pub mod working;
-pub mod help_gui;
 pub mod file_choser;
-pub mod rename;
 pub mod header_bar;
-pub mod message;
+pub mod text;

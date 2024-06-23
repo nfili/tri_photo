@@ -1,7 +1,6 @@
 /**
     Ce module permet de gérer le comportement du programme au lancement,
     initialise les différentes fenetres du programme, les constantes de fonctionnement
-    et la langue
     * */
     use std::{io::{BufRead, BufReader}, path::{Path, PathBuf}, process::exit};
     use gtk::{
@@ -9,7 +8,7 @@
         prelude::{GtkApplicationExt,ApplicationExt,ApplicationExtManual,DialogExtManual,FileExt},
         gio::prelude::ActionMapExt
     };
-    use crate::{gui::GuiWindow, working::Working, popup_accueil::PopupAccueil, gest_files::GestFiles, file_choser::new_load};
+    use crate::{file_choser::new_load, gest_files::GestFiles, gui::GuiWindow, popup_accueil::PopupAccueil, text::Text, working::Working};
 
     pub const APP_ID: &str = "org.gtk_rs.tri_photo";
     pub const APP_RSC: &'static str = "/org/gtk_rs/tri_photo";
@@ -17,6 +16,7 @@
     pub const VERSION: & str = env!("CARGO_PKG_VERSION");
     pub const HEIGHT: i32 = 250;
     pub const WIDTH: i32 = 400;
+
 
     #[derive(Default,Debug,Clone,Eq,Hash,PartialEq)]
     pub enum Cmd {
@@ -28,19 +28,8 @@
         Close
     }
 
-    #[derive(Debug,Clone)]
-    pub struct App<'a> {
-        lang: &'a str,
-    }
-
-    impl App<'_>{
-       pub fn new() -> Self {
-          Self {
-            lang: "fr"
-        }
-    }
     /// Fonction qui lance et gère le comportement du programme
-    pub fn run_gui(&mut self){
+    pub fn run_gui(){
         /// Chargement du CSS
         fn load_css() {
             let provider = gtk::CssProvider::new();
@@ -92,10 +81,6 @@
             app.set_accels_for_action("win.close", &["<Ctrl>W"]);
             window
         }
-        // gestion de la langue (à venir)
-        match self.lang{
-            _ => (),
-        }
         // Initialisation de gtk, inclusion et enregistrement des resources
         let _ = gtk::init();
         let _ = crate::gresources::init();
@@ -106,12 +91,9 @@
             );
         application.connect_startup(|_| load_css());
         application.connect_activate(move |app| {
-            let title_accueil: &str = &format!("{}{}",NAME,": Accueil");
-            let title_conf: &str = &format!("{}{}",NAME,": Configuration");
             let main_window = create_main_widow(app);
-            let win = GuiWindow::new(app,title_conf,&main_window);
-            let parent = &main_window;
-            let accueil = PopupAccueil::new(app,title_accueil,parent);
+            let win = GuiWindow::new(app,&(NAME.to_owned()+&Text::AppConfigTitle.as_string()),&main_window);
+            let accueil = PopupAccueil::new(app,&(NAME.to_owned()+&Text::AppHomeTitle.as_string()),&main_window);
             
             accueil.connect_close_request({
                let app = app.clone();
@@ -145,7 +127,7 @@
                     },
                     Cmd::Quit=> app.quit(),
                     Cmd::Load => {
-                        let load = new_load(Some(&main_window));
+                        let load = new_load(Some(&main_window), &(NAME.to_owned()+&Text::AppLoadTitle.as_string()));
                         let app1=app.clone();
                         load.run_async(move |obj,answer|{
                             obj.close();
@@ -229,5 +211,5 @@
         let byte = byte_unit::Byte::from_bytes( u128::try_from(s).unwrap());
         byte.get_appropriate_unit(true).to_string()
     }
-}
+
 

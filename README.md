@@ -1,9 +1,9 @@
 # ![logo](icons/32x32/tp.png) tri_photo (tp) 
 ![Static Badge](https://img.shields.io/badge/Rust-1.75.0-%2Cblue?style=plastic&logo=Rust)
 
-tri_photo est un programme écrit en rust, il utilise gtk4 pour son interface graphique.
+tri_photo est un programme écrit en Rust, il utilise gtk4 pour son interface graphique.
 
-Il permet de regrouper, dans un meme répertoire hiérachisé de destination, des images dispersées sur son disque ou tout autre support.
+Il permet de regrouper, dans un même répertoire hiérarchisé de destination, des images dispersées sur son disque ou tout autre support.
 
 ![tp](image/configuration.png)
 ***
@@ -20,62 +20,74 @@ Il permet de regrouper, dans un meme répertoire hiérachisé de destination, de
 
 ## Prérequis
 
-Pour installer le programme vous aurez besoin des dependances suivant
+Pour installer le programme vous aurez besoin des dépendances suivante
 
-* cargo
+* sudo
 * gtk4
+* git
 
-> sous Archlinux
+Vous aurez besoin en plus
 
+<details>
+    <summary><img src="https://github.com/archlinux/archwiki/blob/master/extensions/ArchLinux/modules/favicon.ico"> sous Archlinux, et ses dérivés</summary>
+        
 * base-devel
-  
-Fonctionne avec tous les systemes d'exploitation, les suivants ont été testés :
+* cargo
+        
+</details>
+
+<details>
+    <summary><img src="https://www.debian.org/logos/openlogo-nd-25.png"> sous Debian/Ubuntu et ses dérivés</summary>
+        
+* apt
+* wget
+
+</details>
+
+<details>
+    <summary><img src="https://www.redhat.com/favicon.ico"> sous RHEL et ses dérivés</summary>
+    
+* yum
+* wget
+
+</details>
+
+<details>
+    <summary><img src="https://fedoraproject.org/favicon.ico"> sous Fedora et ses dérivés</summary>
+        
+* dnf
+* wget
+
+</details>
+
+<details>
+    <summary><img src="https://www.kernel.org/theme/images/logos/favicon.png"> pour les autres système GNU/Linux non listée</summary>
+        
+* cargo (rust)
+
+</details>
+
+Fonctionne avec tous les systèmes GNU/Linux, les suivants ont été testés :
 * Archlinux
 
 ## Installation
 
-Pour le mement seul archlinux a été testé
-
-<details>
-    <summary><img src="https://github.com/archlinux/archwiki/blob/master/extensions/ArchLinux/modules/favicon.ico"> Archlinux</summary>
+Le script "install_tri_photo.sh" installera automatiquement le paquet en fonction de votre distribution, lancer le simplement en mode utilisateur
 
 ```
-        git clone https://gitlab.archlinux.org/nfili/tri_photo.git
+        cd /opt/
+        git clonne https://github.com/nfili/tri_photo.git
         cd tri_photo
-        makepkg
-        sudo pacman -U tri_photo-[version]-1.pkg.tar.zst
+        ./install_tri_photo.sh
 ```
-</details>
 
-<details>
-    <summary><img src="image/linux.ico"> autre linux</summary>
+## Désinstallation
 
-```
-        git clone https://github.com/nfili/tri_photo.git
-        cd tri_photo
-        cargo build --release 
-        sudo ./install.sh
-```
-</details>
-
-### Désinstallation
-
-<details>
-    <summary><img src="https://github.com/archlinux/archwiki/blob/master/extensions/ArchLinux/modules/favicon.ico"> Archlinux</summary>
+Vous pouvez désinstaller le paquets soit grâce à votre gestionnaire de paquet, soit grâce au script install_tri_photo.sh situé dans le répertoire source du paquet
 
 ```
-        sudo pacman -R tri_photo
+        ./install_tri_photo.sh -r
 ```
-</details>
-
-<details>
-    <summary><img src="image/linux.ico"> autre linux</summary>
-
-```
-        cd chemin/des/sources 
-        sudo ./uninstall.sh
-```
-</details>
 
 ## Utilisation
 
@@ -83,7 +95,7 @@ Pour le mement seul archlinux a été testé
 
 * répertoire source : permet de sélectionner le répertoire où le programme doit chercher
   - exemple : /home/{user}/Downloads
-* répertoire de desticnation : permet de choisir l'emplacement où les fichiers seront copier ou déplacer
+* répertoire de destination : permet de choisir l'emplacement où les fichiers seront copier ou déplacer
   - exemple : /home/{user}/save
 
 ### Fichiers à trouver
@@ -92,7 +104,7 @@ Pour le mement seul archlinux a été testé
 
 ### Arborescence du tri
 
-Sélection de la structure du répertoire de déstination via des options propposées :
+Sélection de la structure du répertoire de destination via des options proposées :
 
 * jour
 * mois
@@ -103,7 +115,7 @@ Sélection de la structure du répertoire de déstination via des options proppo
 ### Traitement
 
 Sélection des option de traitement des fichiers : 
- * Renomer les fichiers
+ * Renommer les fichiers
  * Supprimer les sources
  * Gestion au fur et à mesure
 
@@ -123,7 +135,7 @@ Sélection des option de traitement des fichiers :
     <summary>Contacter Moi 📨</summary>
 
 ### Contact<!-- Required -->
-Contactez-moi par email: [nicolasfilippozzi@gmail.com](mailto:nicolasfilippozzi@gmail.com)
+Contactez-moi par e-mail: [nicolasfilippozzi@gmail.com](mailto:nicolasfilippozzi@gmail.com)
 <!-- 
 * nicolasfilippozzi@gmail.com
 * Nicolas Filippozzi
@@ -132,8 +144,12 @@ Contactez-moi par email: [nicolasfilippozzi@gmail.com](mailto:nicolasfilippozzi@
 </details>
 
 ## Historique des versions
+
+* 0.1.0
+  * Première version de test pre-release
+
 * 1.0.0
-  * Premiére version de test pre-release
+  * Première version de production
 
 ## Licence
 

@@ -31,7 +31,6 @@
             </child>
             <child>
               <object class="GtkLabel" id="lab_mess">
-                <property name="label">test</property>
               </object>
             </child>
           </object>
