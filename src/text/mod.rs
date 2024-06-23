@@ -4,13 +4,9 @@ use gettext::Catalog;
 pub enum Text {
     /// Text commun
     Load,
-    /// texte pour gtkbouton pour suivant
     Next,
-    /// texte de gtkbutton pour quitter
     Quitter,
-    /// texte de gtkbutton pour annuler dans la filechooser
     Cancel,
-    /// texte de gtkbutton pour choisir dans la filechooser
     Choice,
     Valid,
     Rename,
@@ -19,11 +15,8 @@ pub enum Text {
     DataWait,
 
     ///mod app
-    /// Titre de la fenetre popup_acceuil
     AppHomeTitle,
-    /// texte de la fenetre gui
     AppConfigTitle,
-    /// Titre de la fenetre new_load
     AppLoadTitle,
 
     ///mod file
@@ -44,6 +37,7 @@ pub enum Text {
     FileOctobre,
     FileNovembre,
     FileDecembre,
+
     ///mod file_choser
     FileChoserSaveProgress,
     FileChoserSave,
@@ -52,73 +46,39 @@ pub enum Text {
     GestFilesNotPhoto,
     
     ///mod GUI
-    /// texte de gtkentry pour la séléction des sources dans la section répertoire de travail
     GuiEntrySource,
-    /// texte de gtkentry pour la séléction de la destinations dans la section répertoire de travail
     GuiEntryDestination,
-    /// texte de tooltip pour l'icone de rep_source
     GuiTooltipSource,
-    /// texte de tooltip pour l'icone de rep_destination
     GuiTooltipDestination,
-    /// texte de gtkcheckbutton pour only_photo dans la section fichier à trouver
     GuiOnlyPhoto,
-    /// texte de gtkcheckbutton pour day dans la section arborescence du tri
     GuiDay,
-    /// texte de gtkcheckbutton pour month dans la section arborescence du tri
     GuiMonth,
-    /// texte de gtkcheckbutton pour year dans la section arborescence du tri
     GuiYear,
-    /// texte de gtkcheckbutton pour lieu dans la section arborescence du tri
     GuiLieu,
-    /// texte de gtkcheckbutton pour delete dans la section traitement
     GuiDelete,
-    /// texte de gtkcheckbutton pour rename dans la section traitement
     GuiRename,
-    /// texte de gtkcheckbutton pour choose_on_demand dans la section traitement
     GuiChooseOnDemand,
-    /// texte de gtkcheckbutton pour letter dans la section arborescence du tri
     GuiLetter,
-    /// texte de gtkbutton pour run
     GuiDemarrerMove,
-    /// texte de gtkbutton pour run
     GuiDemarrerMoveGestion,
-    /// texte de gtkbutton pour run
     GuiDemarrerCopy,
-    /// texte de gtkbutton pour run
     GuiDemarrerGestion,
-    /// texte de gtklabel pour les fichiers trouvés de la section répertoire de travail
     GuiFileFound,
-    /// texte de gtkframe pour le titre de la section fichier à trouver
     GuiFileAtFound,
-    /// texte de gtkframe pour le titre de la section répertoire de travail
     GuiWorkDir,
-    /// texte de gtklabel pour aperçu dans la section arborescence du tri
     GuiView,
-    /// texte de gtkframe pour le titre de la section arborescence du tri
     GuiSortingTree,
-    /// texte de gtkframe pour le titre de la section traitement
     GuiTraitement,
-    /// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
     GuiDirValid,
-    /// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
     GuiFileTypeOk,
-    /// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
     GuiFileTypeNone,
-    /// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
     GuiSelWait,
-    /// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
     GuiErrorDest,
-    /// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
     GuiErrorDestBis,
-    /// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
     GuiErrorSel,
-    /// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
     GuiReadyCopy,
-    /// texte de gtklabel pour infos dans la section répertoire de travail (fausse bar d'état)
     GuiScanningProgress,
-    /// texte de gtkbutton pour chercher dans la section fichier à trouver
     GuiChercher,
-    /// texte de la description du programme pour gtkabout
     GuiAboutShortDescription,
 
     /// mod gui_help
@@ -151,8 +111,10 @@ pub enum Text {
     /// mod rename
     RenameNewName,
     RenameKeep,
+
     /// mod popup_acceuil
     PopupAccueilHomeMessage,
+    
     ///mod working
     WorkingTitle,
     WorkingDataNone,
