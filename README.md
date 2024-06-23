@@ -30,8 +30,10 @@ Vous aurez besoin en plus
 
 <details>
     <summary><img src="https://github.com/archlinux/archwiki/blob/master/extensions/ArchLinux/modules/favicon.ico"> sous Archlinux, et ses dérivés</summary>
-        * base-devel<br />
-        * cargo
+        <blocquote>
+            - base-devel<br />
+            - cargo
+        </blocquote>
 </details>
 
 <details>
