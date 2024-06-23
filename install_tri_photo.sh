@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 ##################################################################
-# Name : install.sh                                   			  #
-# Version : 0.1.0                                                #
+# Name : install_tri_photo.sh                           			  #
+# Version : 1.0.0                                                #
 # Crée le : 05-2024                                              #
-# Modifié le : 01-06-2024                                        #
+# Modifié le : 23-06-2024                                        #
 # Desciption : Script d'installation/désinstallation de tri_photo#
 ##################################################################
 
@@ -12,7 +12,7 @@ TEXTDOMAIN=${0:2}
 TEXTDOMAINDIR="$PWD/locale"
 
 PKGNAME=tri_photo
-VERSION="0.1.0"
+VERSION="1.0.0"
 DEV_MAIL="nicolasfilippozzi@gmail.com"
 
 
@@ -57,7 +57,7 @@ function prerequis(){
 
 clear
 printf $"Welcome to the installation script of %s \n" "$PKGNAME"
-echo
+echo 
 #Vérification des droits de l'utilisateur
 if [[ $(id -u) -eq 0 ]]
 then
@@ -93,7 +93,6 @@ fi
 # Détection du systéme d'exploitation
 OS=$(cat /etc/*-release 2> /dev/null | grep -E -m1 ID | sed -e "s/ID=//" | sed -e "s/\"//g")
 printf $"Operating system: %s\n" "$OS"
-OS="gty"
 # Sélection du gestionnaire de paquet
 for name in "${DEBIAN_DERIV[@]}"; do
 	[[ "$OS" == "$name" ]] && PACKAGE_MANAGER="apt"
@@ -167,7 +166,8 @@ case $PACKAGE_MANAGER in
 			_prerequis_mod=$( echo $_prerequis | sed -e "s/wget/git/" )
 			prerequis "$_prerequis_mod" "pacman -Q" "pacman -S"
 			echo $"Retrieving PKGBUILD from gitlab and sources from github"
-			mkdir -pv /opt/$PKGNAME && cd /opt/$PKGNAME  
+			mkdir -pv /opt/$PKGNAME && cd /opt/$PKGNAME
+			mkdir -pv pkgbuild && cd pkgbuild  
 			git clone https://gitlab.archlinux.org/nfili/$PKGNAME.git
 			cd $PKGNAME
 			makepkg -Cci
@@ -213,6 +213,7 @@ case $PACKAGE_MANAGER in
 			sudo rm -v /usr/bin/tp
 			sudo rm -v /usr/share/applications/tp.desktop
 			sudo rm -v -R /usr/share/{doc,licences}/$PKGNAME
+			sudo rm -v -R /usr/share/locale/*/LC_MESSAGES/tp.mo
 			for res in 512x512 256x256 128x128 80x80 72x72 64x64 48x48 44x44 36x36 32x32 24x24 22x22 20x20 16x16 8x8; do
 				sudo rm -v "/usr/share/icons/hicolor/${res}/apps/tp.png"
 			done
@@ -234,9 +235,13 @@ case $PACKAGE_MANAGER in
 				sudo cp "icons/${res}/tp.png" "/usr/share/icons/hicolor/${res}/apps/tp.png"
 			done
 
+			for lang in `ls locale`;do
+				sudo install -dm755 "/usr/share/locale/${lang}/LC_MESSAGES/"
+				sudo cp -v "locale/${lang}/LC_MESSAGES/tp.mo" "/usr/share/locale/${lang}/LC_MESSAGES/tp.mo"
+			done
+
 			sudo install -dm755 "/usr/share/applications"
 			sudo install -Dm644 'tp.desktop' "/usr/share/applications/tp.desktop"
-
 			sudo install -Dm644 "README.md" "/usr/share/doc/${PKGNAME}/README.md"
 			sudo install -Dm644 "COPYRIGHT.md" "/usr/share/doc/${PKGNAME}/COPYRIGHT"
 			sudo install -Dm644 "CHANGELOG.md" "/usr/share/doc/${PKGNAME}/CHANGELOG"
