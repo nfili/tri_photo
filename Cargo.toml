@@ -69,6 +69,7 @@ assets = [
 	["icons/128x128/tp.png","usr/share/icons/hicolor/128x128/apps/tp.png","644"],
 	["icons/256x256/tp.png","usr/share/icons/hicolor/256x256/apps/tp.png","644"],
 	["icons/512x512/tp.png","usr/share/icons/hicolor/512x512/apps/tp.png","644"],
+	["locale/fr/LC_MESSAGES/tp.mo","usr/share/locale/fr/LC_MESSAGES/tp.mo","644"],
 ]
 
 [package.metadata.generate-rpm]
@@ -97,6 +98,7 @@ assets = [
 	{ source = "icons/128x128/tp.png", dest = "/usr/share/icons/hicolor/128x128/apps/tp.png", mode = "644"},
 	{ source = "icons/256x256/tp.png", dest = "/usr/share/icons/hicolor/256x256/apps/tp.png", mode = "644"},
 	{ source = "icons/512x512/tp.png", dest = "/usr/share/icons/hicolor/512x512/apps/tp.png", mode = "644"},
+	{ source = "locale/fr/LC_MESSAGES/tp.mo", dest = "/usr/share/locale/fr/LC_MESSAGES/tp.mo, mode = "644"},
 ]
 
 [package.metadata.generate-rpm.requires]
