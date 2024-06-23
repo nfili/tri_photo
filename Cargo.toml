@@ -1,6 +1,6 @@
 [package]
 name = "tri_photo"
-version = "1.0.0"  #:version
+version = "1.0.1"  #:version
 authors = ["Nicolas Filippozzi <nicolasfilippozzi@gmail.com>"]
 description = """
 tri_photo is a photo/image copy program, it can be installed on linux, mac or window.
