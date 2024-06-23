@@ -184,13 +184,14 @@ pub enum Text {
 }
 impl Text{
     pub fn as_string(&self) -> String{
+        let base_dir_locale = "/usr/share/locale/";
         let args = env!("LANG");
         let args= args[0..2].to_string();
-        let binding = "locale/".to_owned()+&args+"/LC_MESSAGES/tp.mo";
+        let binding = base_dir_locale.to_owned()+&args+"/LC_MESSAGES/tp.mo";
         let path = Path::new(&binding);
         let catalog = match path.exists(){
             true => {
-                let f:File = File::open("locale/".to_owned()+&args+"/LC_MESSAGES/tp.mo").expect("error file");
+                let f:File = File::open(base_dir_locale.to_owned()+&args+"/LC_MESSAGES/tp.mo").expect("error file");
                 Catalog::parse(f).expect("not parse this file") 
             },
             false => {
