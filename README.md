@@ -30,31 +30,30 @@ Vous aurez besoin en plus
 
 <details>
     <summary><img src="https://github.com/archlinux/archwiki/blob/master/extensions/ArchLinux/modules/favicon.ico"> sous Archlinux, et ses dérivés</summary>
-        * base-devel
+        * base-devel<br />
         * cargo
 </details>
 
 <details>
     <summary><img src="https://www.debian.org/logos/openlogo-nd-25.png"> sous Debian/Ubuntu et ses dérivés</summary>
-        * apt
+        * apt<br />
         * wget
 </details>
 
 <details>
     <summary><img src="https://www.redhat.com/favicon.ico"> sous RHEL et ses dérivés</summary>
-        * yum
+        * yum<br />
         * wget
 </details>
 
 <details>
     <summary><img src="https://fedoraproject.org/favicon.ico"> sous Fedora et ses dérivés</summary>
-        * dnf
+        * dnf<br />
         * wget
 </details>
 
 <details>
     <summary><img src="https://www.kernel.org/theme/images/logos/favicon.png"> pour les autres système GNU/Linux non listée</summary>
-
         * cargo (rust)
 </details>
 
