@@ -52,7 +52,7 @@ function checkScriptname(){
         echo "File not exist or user hasn't execute access"
         exit 1
     else
-        if [[ ! "$1" =~ [a-Z0-9_-]*[.]{0,1}[a-z]{0,2} ]]; then
+        if [[ ! "$1" =~ ^([a-zA-Z\d]*)(([-]|[_]){1}[a-zA-Z\d]+)*([.]{1}[a-zA-Z]+)?$ ]]; then
             echo "File does not match the standard file name format"
             exit 1
         fi
