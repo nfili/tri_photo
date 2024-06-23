@@ -30,33 +30,41 @@ Vous aurez besoin en plus
 
 <details>
     <summary><img src="https://github.com/archlinux/archwiki/blob/master/extensions/ArchLinux/modules/favicon.ico"> sous Archlinux, et ses dérivés</summary>
-        <blocquote>
-            - base-devel<br />
-            - cargo
-        </blocquote>
+        
+        * base-devel
+        * cargo
+        
 </details>
 
 <details>
     <summary><img src="https://www.debian.org/logos/openlogo-nd-25.png"> sous Debian/Ubuntu et ses dérivés</summary>
-        * apt<br />
+        
+        * apt
         * wget
+
 </details>
 
 <details>
     <summary><img src="https://www.redhat.com/favicon.ico"> sous RHEL et ses dérivés</summary>
-        * yum<br />
+        
+        * yum
         * wget
+
 </details>
 
 <details>
     <summary><img src="https://fedoraproject.org/favicon.ico"> sous Fedora et ses dérivés</summary>
-        * dnf<br />
+        
+        * dnf
         * wget
+
 </details>
 
 <details>
     <summary><img src="https://www.kernel.org/theme/images/logos/favicon.png"> pour les autres système GNU/Linux non listée</summary>
+        
         * cargo (rust)
+
 </details>
 
 Fonctionne avec tous les systèmes GNU/Linux, les suivants ont été testés :
