@@ -11,3 +11,8 @@
       * Ajout des fichiers de traduction fr
       * Langue par défaut, anglais
       * Première release de production
+
+## [v1.0.1]-2024-06-23
+
+      * Correction de tp.desktop pour l'affichage de l’icône dans la barre des taches sous wayland
+      * Suppression d'une variable inutilisé

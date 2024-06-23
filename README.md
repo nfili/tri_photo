@@ -151,6 +151,9 @@ Contactez-moi par e-mail: [nicolasfilippozzi@gmail.com](mailto:nicolasfilippozzi
 * 1.0.0
   * Première version de production
 
+* 1.0.1
+  * Correction de bug mineure
+
 ## Licence
 
 Voir les fichiers :
