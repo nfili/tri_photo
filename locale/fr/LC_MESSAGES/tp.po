@@ -45,7 +45,7 @@ msgstr "Valider"
 
 #: src/text/mod.rs:195
 msgid "Rename"
-msgstr "Renomer"
+msgstr "Renommer"
 
 #: src/text/mod.rs:196 src/text/mod.rs:258
 msgid "Save"
@@ -115,7 +115,7 @@ msgstr "Supprimer les sources"
 
 #: src/text/mod.rs:214
 msgid "Rename sources"
-msgstr "Renomer les sources"
+msgstr "Renommer les sources"
 
 #: src/text/mod.rs:215
 msgid "Choose as you go"
@@ -435,7 +435,7 @@ msgstr ""
 #. mod working
 #: src/text/mod.rs:299
 msgid "Copying, please wait..."
-msgstr "Copies en cours, veuiller patienter..."
+msgstr "Copies en cours, veuille r patienter..."
 
 #. Text::WorkingProgressStatusWait => todo!(),
 #: src/text/mod.rs:301
@@ -456,7 +456,7 @@ msgstr "Localisation"
 
 #: src/text/mod.rs:305
 msgid "Status"
-msgstr "Status"
+msgstr "Statut"
 
 #: src/text/mod.rs:306
 msgid "Save and Quit"
@@ -548,7 +548,7 @@ msgstr "Choix effectué"
 
 #: src/text/mod.rs:329
 msgid "Renamed"
-msgstr "Renomer"
+msgstr "Renommé"
 
 #: src/text/mod.rs:330
 msgid "Unknown"
