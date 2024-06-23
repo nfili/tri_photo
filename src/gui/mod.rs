@@ -463,7 +463,6 @@ impl GuiWindow{
         });
         let hb_about = create_btn_hb(rsc.mod_path("about.png").unwrap());
         hb_about.set_cursor_from_name(Some("pointer")); 
-        let this = self.clone();
         hb_about.connect_clicked( move |obj|{
             obj.set_cursor_from_name(Some("grabbing"));
             let about = gtk::AboutDialog::new();

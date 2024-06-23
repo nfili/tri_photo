@@ -9,3 +9,4 @@ Exec=/usr/bin/tp
 Icon=tp
 Terminal=False
 StartupNotify=true
+Categories=Graphics;Photography;Utility;
